@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.moylishmotors_project.model;
+package moylishmotors;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -16,20 +16,20 @@ import javax.persistence.TypedQuery;
 public class StockDB
 {
 
-	public static List<Sheet1> getAllSheet1()
+	public static List<SalesStock> getAllSalesStock()
 	{
 		EntityManager em = DBUtil.getEMF().createEntityManager();
 
 		String q = "SELECT s from sheet1 s";
 
-		TypedQuery<Sheet1> typedQuery = em.createQuery(q, Sheet1.class);
+		TypedQuery<SalesStock> typedQuery = em.createQuery(q, SalesStock.class);
 
-		List<Sheet1> list = null;
+		List<SalesStock> list = null;
 
 		try
 		{
 			list = typedQuery.getResultList();
-			for (Sheet1 s : list)
+			for (SalesStock s : list)
 			{
 				System.out.println(s);
 			}
@@ -51,12 +51,12 @@ public class StockDB
 		return list;
 	}
 
-//    public static Sheet1 getAccountByID(int accountID) {
+//    public static SalesStock getAccountByID(int accountID) {
 //        EntityManager em = DBUtil.getEmf().createEntityManager();
 //
-//        Sheet1 sheet1 = null;
+//        SalesStock sheet1 = null;
 //        try {
-//            sheet1 = em.find(Sheet1.class, accountID);
+//            sheet1 = em.find(SalesStock.class, accountID);
 //        } catch (Exception ex) {
 //            System.out.println(ex);
 //        } finally {

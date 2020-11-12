@@ -11,8 +11,7 @@
 
 <html>
     <head><title>All Sales stock</title></head>
-
- s   <body>
+	<body>
         <h1>All Sales Stock</h1>
         <br><br>
         <table width='1000' border='2'>

@@ -1,7 +1,7 @@
-package com.mycompany.moylishmotors_project;
+package moylishmotors.web.servlets;
 
-import com.mycompany.moylishmotors_project.model.Sheet1;
-import com.mycompany.moylishmotors_project.model.StockDB;
+import moylishmotors.SalesStock;
+import moylishmotors.StockDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,12 +16,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Industry Connect
  */
-@WebServlet(name = "ShowAllSalesStock", urlPatterns =
+@WebServlet(name = "SalesStock", urlPatterns =
 {
-	"/ShowAllSalesStock"
+	"/SalesStock"
 })
 
-public class ShowAllSalesStock extends HttpServlet
+public class SalesStockServlet extends HttpServlet
 {
 
 	/**
@@ -44,7 +44,7 @@ public class ShowAllSalesStock extends HttpServlet
 			try
 			{
 
-				List<Sheet1> list = StockDB.getAllSheet1();
+				List<SalesStock> list = StockDB.getAllSalesStock();
 
 				if (list == null || list.isEmpty())
 				{
