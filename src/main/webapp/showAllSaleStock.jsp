@@ -1,7 +1,7 @@
 <%-- 
     Document   : showAllSaleStock
     Created on : 11 Nov 2020, 12:42:54
-    Author     : Industry Connect
+    Author     : Ruchi Devi <https://github.com/Ruchi992>
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,11 +9,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <LINK REL=STYLESHEET HREF="assets/css/style.css" TYPE="text/css">
 
-
 <html>
     <head><title>All Sales stock</title></head>
 
-    <body>
+ s   <body>
         <h1>All Sales Stock</h1>
         <br><br>
         <table width='1000' border='2'>

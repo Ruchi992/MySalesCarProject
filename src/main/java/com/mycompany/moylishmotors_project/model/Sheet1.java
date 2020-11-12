@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -58,8 +60,8 @@ public class Sheet1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "Listing Number")
     private Integer listingNumber;
     @Size(max = 10)
@@ -74,16 +76,22 @@ public class Sheet1 implements Serializable {
     @Size(max = 40)
     @Column(name = "Model")
     private String model;
-    @Size(max = 19)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 19)
     @Column(name = "Colour")
     private String colour;
     @Size(max = 1012)
     @Column(name = "Description")
     private String description;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "Buy Price")
-    private Integer buyPrice;
+    private int buyPrice;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "List Price")
-    private Integer listPrice;
+    private int listPrice;
     @Column(name = "Odometer (KPH)")
     private Integer odometerKPH;
     @Size(max = 18)
@@ -98,7 +106,9 @@ public class Sheet1 implements Serializable {
     @Size(max = 9)
     @Column(name = "Transmission")
     private String transmission;
-    @Size(max = 11)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 11)
     @Column(name = "Body")
     private String body;
     @Size(max = 3)
@@ -142,6 +152,14 @@ public class Sheet1 implements Serializable {
 
     public Sheet1(Integer listingNumber) {
         this.listingNumber = listingNumber;
+    }
+
+    public Sheet1(Integer listingNumber, String colour, int buyPrice, int listPrice, String body) {
+        this.listingNumber = listingNumber;
+        this.colour = colour;
+        this.buyPrice = buyPrice;
+        this.listPrice = listPrice;
+        this.body = body;
     }
 
     public Integer getListingNumber() {
@@ -200,19 +218,19 @@ public class Sheet1 implements Serializable {
         this.description = description;
     }
 
-    public Integer getBuyPrice() {
+    public int getBuyPrice() {
         return buyPrice;
     }
 
-    public void setBuyPrice(Integer buyPrice) {
+    public void setBuyPrice(int buyPrice) {
         this.buyPrice = buyPrice;
     }
 
-    public Integer getListPrice() {
+    public int getListPrice() {
         return listPrice;
     }
 
-    public void setListPrice(Integer listPrice) {
+    public void setListPrice(int listPrice) {
         this.listPrice = listPrice;
     }
 
@@ -382,8 +400,7 @@ public class Sheet1 implements Serializable {
 
     @Override
     public String toString() {
-        return "Sheet1{" + "listingNumber=" + listingNumber + ", year=" + year + ", reg=" + reg + ", make=" + make + ", model=" + model + ", colour=" + colour + ", description=" + description + ", buyPrice=" + buyPrice + ", listPrice=" + listPrice + ", odometerKPH=" + odometerKPH + ", kph=" + kph + ", engine=" + engine + ", fuel=" + fuel + ", transmission=" + transmission + ", body=" + body + ", isofix=" + isofix + ", motorTax=" + motorTax + ", previousOwners=" + previousOwners + ", salesPerson=" + salesPerson + ", salesPersonPhone=" + salesPersonPhone + ", salesPersonEmail=" + salesPersonEmail + ", salesPersonFax=" + salesPersonFax + ", lastPreviousOwnersName=" + lastPreviousOwnersName + ", lastPreviousOwnerAddress=" + lastPreviousOwnerAddress + ", lastPreviousOwnerPhone=" + lastPreviousOwnerPhone + ", fullServiceHistory=" + fullServiceHistory + ", note=" + note + '}';
+        return "com.mycompany.moylishmotors_project.model.Sheet1[ listingNumber=" + listingNumber + " ]";
     }
-
     
 }
