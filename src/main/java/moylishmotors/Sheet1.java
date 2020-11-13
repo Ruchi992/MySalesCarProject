@@ -6,13 +6,13 @@
 package moylishmotors;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -24,53 +24,62 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Ruchi Devi <https://github.com/Ruchi992>
  */
 @Entity
-@Table(name = "salesstock")
+@Table(name = "sheet1")
 @XmlRootElement
 @NamedQueries(
 {
-	@NamedQuery(name = "Salesstock.findAll", query = "SELECT s FROM Salesstock s"),
-	@NamedQuery(name = "Salesstock.findById", query = "SELECT s FROM Salesstock s WHERE s.id = :id"),
-	@NamedQuery(name = "Salesstock.findByListingNumber", query = "SELECT s FROM Salesstock s WHERE s.listingNumber = :listingNumber"),
-	@NamedQuery(name = "Salesstock.findByBuyPrice", query = "SELECT s FROM Salesstock s WHERE s.buyPrice = :buyPrice"),
-	@NamedQuery(name = "Salesstock.findByListPrice", query = "SELECT s FROM Salesstock s WHERE s.listPrice = :listPrice"),
-	@NamedQuery(name = "Salesstock.findByOdometerKPH", query = "SELECT s FROM Salesstock s WHERE s.odometerKPH = :odometerKPH"),
-	@NamedQuery(name = "Salesstock.findByEngine", query = "SELECT s FROM Salesstock s WHERE s.engine = :engine"),
-	@NamedQuery(name = "Salesstock.findByMotorTax", query = "SELECT s FROM Salesstock s WHERE s.motorTax = :motorTax"),
-	@NamedQuery(name = "Salesstock.findByPreviousOwners", query = "SELECT s FROM Salesstock s WHERE s.previousOwners = :previousOwners")
+	@NamedQuery(name = "Sheet1.findAll", query = "SELECT s FROM Sheet1 s"),
+	@NamedQuery(name = "Sheet1.findByListingNumber", query = "SELECT s FROM Sheet1 s WHERE s.listingNumber = :listingNumber"),
+	@NamedQuery(name = "Sheet1.findByYear", query = "SELECT s FROM Sheet1 s WHERE s.year = :year"),
+	@NamedQuery(name = "Sheet1.findByReg", query = "SELECT s FROM Sheet1 s WHERE s.reg = :reg"),
+	@NamedQuery(name = "Sheet1.findByMake", query = "SELECT s FROM Sheet1 s WHERE s.make = :make"),
+	@NamedQuery(name = "Sheet1.findByModel", query = "SELECT s FROM Sheet1 s WHERE s.model = :model"),
+	@NamedQuery(name = "Sheet1.findByColour", query = "SELECT s FROM Sheet1 s WHERE s.colour = :colour"),
+	@NamedQuery(name = "Sheet1.findByDescription", query = "SELECT s FROM Sheet1 s WHERE s.description = :description"),
+	@NamedQuery(name = "Sheet1.findByBuyPrice", query = "SELECT s FROM Sheet1 s WHERE s.buyPrice = :buyPrice"),
+	@NamedQuery(name = "Sheet1.findByListPrice", query = "SELECT s FROM Sheet1 s WHERE s.listPrice = :listPrice"),
+	@NamedQuery(name = "Sheet1.findByOdometerKPH", query = "SELECT s FROM Sheet1 s WHERE s.odometerKPH = :odometerKPH"),
+	@NamedQuery(name = "Sheet1.findByKph", query = "SELECT s FROM Sheet1 s WHERE s.kph = :kph"),
+	@NamedQuery(name = "Sheet1.findByEngine", query = "SELECT s FROM Sheet1 s WHERE s.engine = :engine"),
+	@NamedQuery(name = "Sheet1.findByFuel", query = "SELECT s FROM Sheet1 s WHERE s.fuel = :fuel"),
+	@NamedQuery(name = "Sheet1.findByTransmission", query = "SELECT s FROM Sheet1 s WHERE s.transmission = :transmission"),
+	@NamedQuery(name = "Sheet1.findByBody", query = "SELECT s FROM Sheet1 s WHERE s.body = :body"),
+	@NamedQuery(name = "Sheet1.findByIsofix", query = "SELECT s FROM Sheet1 s WHERE s.isofix = :isofix"),
+	@NamedQuery(name = "Sheet1.findByMotorTax", query = "SELECT s FROM Sheet1 s WHERE s.motorTax = :motorTax"),
+	@NamedQuery(name = "Sheet1.findByPreviousOwners", query = "SELECT s FROM Sheet1 s WHERE s.previousOwners = :previousOwners"),
+	@NamedQuery(name = "Sheet1.findBySalesPerson", query = "SELECT s FROM Sheet1 s WHERE s.salesPerson = :salesPerson"),
+	@NamedQuery(name = "Sheet1.findBySalesPersonPhone", query = "SELECT s FROM Sheet1 s WHERE s.salesPersonPhone = :salesPersonPhone"),
+	@NamedQuery(name = "Sheet1.findBySalesPersonEmail", query = "SELECT s FROM Sheet1 s WHERE s.salesPersonEmail = :salesPersonEmail"),
+	@NamedQuery(name = "Sheet1.findBySalesPersonFax", query = "SELECT s FROM Sheet1 s WHERE s.salesPersonFax = :salesPersonFax"),
+	@NamedQuery(name = "Sheet1.findByLastPreviousOwnersName", query = "SELECT s FROM Sheet1 s WHERE s.lastPreviousOwnersName = :lastPreviousOwnersName"),
+	@NamedQuery(name = "Sheet1.findByLastPreviousOwnerAddress", query = "SELECT s FROM Sheet1 s WHERE s.lastPreviousOwnerAddress = :lastPreviousOwnerAddress"),
+	@NamedQuery(name = "Sheet1.findByLastPreviousOwnerPhone", query = "SELECT s FROM Sheet1 s WHERE s.lastPreviousOwnerPhone = :lastPreviousOwnerPhone"),
+	@NamedQuery(name = "Sheet1.findByFullServiceHistory", query = "SELECT s FROM Sheet1 s WHERE s.fullServiceHistory = :fullServiceHistory"),
+	@NamedQuery(name = "Sheet1.findByNote", query = "SELECT s FROM Sheet1 s WHERE s.note = :note"),
+	@NamedQuery(name = "Sheet1.findById", query = "SELECT s FROM Sheet1 s WHERE s.id = :id")
 })
-public class SalesStock implements Serializable
+public class Sheet1 implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "Id")
-	private Integer id;
 	@Column(name = "Listing Number")
 	private Integer listingNumber;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 10)
     @Column(name = "Year")
 	private String year;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 12)
     @Column(name = "Reg")
 	private String reg;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 13)
     @Column(name = "Make")
 	private String make;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 40)
     @Column(name = "Model")
 	private String model;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 19)
     @Column(name = "Colour")
 	private String colour;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 1012)
     @Column(name = "Description")
 	private String description;
 	@Column(name = "Buy Price")
@@ -79,81 +88,65 @@ public class SalesStock implements Serializable
 	private Integer listPrice;
 	@Column(name = "Odometer (KPH)")
 	private Integer odometerKPH;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 18)
     @Column(name = "0-62 kph")
 	private String kph;
 	// @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
 	@Column(name = "Engine")
-	private Double engine;
-	@Lob
-    @Size(max = 65535)
+	private BigDecimal engine;
+	@Size(max = 8)
     @Column(name = "Fuel")
 	private String fuel;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 9)
     @Column(name = "Transmission")
 	private String transmission;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 11)
     @Column(name = "Body")
 	private String body;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 3)
     @Column(name = "Isofix")
 	private String isofix;
-	@Column(name = "Motor Tax")
-	private Integer motorTax;
+	@Size(max = 4)
+    @Column(name = "Motor Tax")
+	private String motorTax;
 	@Column(name = "Previous Owners")
 	private Integer previousOwners;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 14)
     @Column(name = "Sales Person")
 	private String salesPerson;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 10)
     @Column(name = "Sales Person Phone")
 	private String salesPersonPhone;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 10)
     @Column(name = "Sales Person Email")
 	private String salesPersonEmail;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 10)
     @Column(name = "Sales Person Fax")
 	private String salesPersonFax;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 21)
     @Column(name = "Last Previous Owners Name")
 	private String lastPreviousOwnersName;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 76)
     @Column(name = "Last Previous Owner Address")
 	private String lastPreviousOwnerAddress;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 11)
     @Column(name = "Last Previous Owner Phone")
 	private String lastPreviousOwnerPhone;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 1)
     @Column(name = "Full Service History")
 	private String fullServiceHistory;
-	@Lob
-    @Size(max = 65535)
+	@Size(max = 90)
     @Column(name = "Note")
 	private String note;
-	public SalesStock()
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "Id")
+	private Integer id;
+	public Sheet1()
 	{
 	}
-	public SalesStock(Integer id)
-	{
-		this.id = id;
-	}
-	public Integer getId()
-	{
-		return id;
-	}
-	public void setId(Integer id)
+	public Sheet1(Integer id)
 	{
 		this.id = id;
 	}
@@ -245,11 +238,11 @@ public class SalesStock implements Serializable
 	{
 		this.kph = kph;
 	}
-	public Double getEngine()
+	public BigDecimal getEngine()
 	{
 		return engine;
 	}
-	public void setEngine(Double engine)
+	public void setEngine(BigDecimal engine)
 	{
 		this.engine = engine;
 	}
@@ -285,11 +278,11 @@ public class SalesStock implements Serializable
 	{
 		this.isofix = isofix;
 	}
-	public Integer getMotorTax()
+	public String getMotorTax()
 	{
 		return motorTax;
 	}
-	public void setMotorTax(Integer motorTax)
+	public void setMotorTax(String motorTax)
 	{
 		this.motorTax = motorTax;
 	}
@@ -373,6 +366,14 @@ public class SalesStock implements Serializable
 	{
 		this.note = note;
 	}
+	public Integer getId()
+	{
+		return id;
+	}
+	public void setId(Integer id)
+	{
+		this.id = id;
+	}
 	@Override
 	public int hashCode()
 	{
@@ -384,11 +385,11 @@ public class SalesStock implements Serializable
 	public boolean equals(Object object)
 	{
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof SalesStock))
+		if (!(object instanceof Sheet1))
 		{
 			return false;
 		}
-		SalesStock other = (SalesStock) object;
+		Sheet1 other = (Sheet1) object;
 		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
 		{
 			return false;
@@ -398,7 +399,8 @@ public class SalesStock implements Serializable
 	@Override
 	public String toString()
 	{
-		return "moylishmotors.Salesstock[ id=" + id + " ]";
+		return "Sheet1{" + "listingNumber=" + listingNumber + ", year=" + year + ", reg=" + reg + ", make=" + make + ", model=" + model + ", colour=" + colour + ", description=" + description + ", buyPrice=" + buyPrice + ", listPrice=" + listPrice + ", odometerKPH=" + odometerKPH + ", kph=" + kph + ", engine=" + engine + ", fuel=" + fuel + ", transmission=" + transmission + ", body=" + body + ", isofix=" + isofix + ", motorTax=" + motorTax + ", previousOwners=" + previousOwners + ", salesPerson=" + salesPerson + ", salesPersonPhone=" + salesPersonPhone + ", salesPersonEmail=" + salesPersonEmail + ", salesPersonFax=" + salesPersonFax + ", lastPreviousOwnersName=" + lastPreviousOwnersName + ", lastPreviousOwnerAddress=" + lastPreviousOwnerAddress + ", lastPreviousOwnerPhone=" + lastPreviousOwnerPhone + ", fullServiceHistory=" + fullServiceHistory + ", note=" + note + ", id=" + id + '}';
 	}
+	
 	
 }

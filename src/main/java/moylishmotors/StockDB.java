@@ -16,20 +16,20 @@ import javax.persistence.TypedQuery;
 public class StockDB
 {
 
-	public static List<SalesStock> getAllSalesStock()
+	public static List<Sheet1> getAllSheet1()
 	{
 		EntityManager em = DBUtil.getEMF().createEntityManager();
 
-		String q = "SELECT s from sheet1 s";
+		String q = "SELECT s from Sheet1 s";
 
-		TypedQuery<SalesStock> typedQuery = em.createQuery(q, SalesStock.class);
+		TypedQuery<Sheet1> typedQuery = em.createQuery(q, Sheet1.class);
 
-		List<SalesStock> list = null;
+		List<Sheet1> list = null;
 
 		try
 		{
 			list = typedQuery.getResultList();
-			for (SalesStock s : list)
+			for (Sheet1 s : list)
 			{
 				System.out.println(s);
 			}

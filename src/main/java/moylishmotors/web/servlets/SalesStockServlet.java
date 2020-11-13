@@ -1,6 +1,5 @@
 package moylishmotors.web.servlets;
 
-import moylishmotors.SalesStock;
 import moylishmotors.StockDB;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import moylishmotors.Sheet1;
 
 /**
  *
@@ -44,8 +44,7 @@ public class SalesStockServlet extends HttpServlet
 			try
 			{
 
-				List<SalesStock> list = StockDB.getAllSalesStock();
-
+				List<Sheet1> list = StockDB.getAllSheet1();
 				if (list == null || list.isEmpty())
 				{
 					address = "/Error.jsp";
