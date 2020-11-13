@@ -43,8 +43,10 @@ public class SalesStockServlet extends HttpServlet
 
 			try
 			{
+		System.out.println("##################    Here1   ######################");
 
 				List<SalesStock> list = StockDB.getAllSalesStock();
+		System.out.println("##################    Here2   ######################");
 
 				if (list == null || list.isEmpty())
 				{

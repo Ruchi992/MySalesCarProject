@@ -20,7 +20,7 @@ public class StockDB
 	{
 		EntityManager em = DBUtil.getEMF().createEntityManager();
 
-		String q = "SELECT s from sheet1 s";
+		String q = "SELECT s from Salesstock s";
 
 		TypedQuery<SalesStock> typedQuery = em.createQuery(q, SalesStock.class);
 

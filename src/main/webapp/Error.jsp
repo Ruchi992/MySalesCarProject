@@ -11,6 +11,6 @@
 <HEAD> <TITLE>ERROR!</TITLE></HEAD>
 
 <BODY>
-    Opps, something has gone wrong. <a href="index.jsp">Go Back</a>
+    Opps, something has gone wrong. <a href="index.html">Go Back</a>
 </BODY>
 </HTML>
