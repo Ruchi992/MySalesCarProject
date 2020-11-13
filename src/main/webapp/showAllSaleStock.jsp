@@ -32,7 +32,7 @@
                 <td>Transmission</td>
                 <td>Body</td>
                 <td>Isofix</td>
-                <td>Motor Tax</td>
+				        <td>Motor Tax</td>
                 <td>Previous Owners</td>
                 <td>Sales Person</td>
                 <td>Sales Person Phone</td>
