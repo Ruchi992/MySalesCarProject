@@ -1,68 +1,70 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package moylishmotors;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-/**
- *
- * @author Industry Connect
- */
 public class StockDB
 {
-
-	public static List<Sheet1> getAllSheet1()
+	public static List<SalesStock> getAllSalesStock()
 	{
-		EntityManager em = DBUtil.getEMF().createEntityManager();
+		EntityManager entityManager = DBUtil.getEntityManagerFactory().createEntityManager();
+		String sql = "SELECT s FROM SalesStock s";
 
-		String q = "SELECT s from Sheet1 s";
-
-		TypedQuery<Sheet1> typedQuery = em.createQuery(q, Sheet1.class);
-
-		List<Sheet1> list = null;
-
+		TypedQuery<SalesStock> typedQuery = entityManager.createQuery(sql, SalesStock.class);
 		try
 		{
-			list = typedQuery.getResultList();
-			for (Sheet1 s : list)
-			{
-				System.out.println(s);
-			}
-
-			if (list == null || list.size() == 0)
-			{
-				return null;
-			}
-		}
-		catch (Exception ex)
-		{
-			System.out.println(ex);
+			return typedQuery.getResultList();
 		}
 		finally
 		{
-			em.close();
+			entityManager.close();
 		}
-		System.out.println("Here is  end");
-		return list;
 	}
+	public static SalesStock getSalesStockByID(int stockId) {
+        EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
 
-//    public static SalesStock getAccountByID(int accountID) {
-//        EntityManager em = DBUtil.getEmf().createEntityManager();
-//
-//        SalesStock sheet1 = null;
-//        try {
-//            sheet1 = em.find(SalesStock.class, accountID);
-//        } catch (Exception ex) {
-//            System.out.println(ex);
-//        } finally {
-//            em.close();
-//        }
-//
-//        return sheet1;
-//    }
+        SalesStock salesStock = null;
+        try {
+            salesStock = em.find(SalesStock.class, stockId);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+
+        return salesStock;
+    }
+	
+	 public static List<String> getModel() {
+        EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
+        System.out.println("SalesStock getModel");
+		
+        String query = "SELECT s FROM SalesStock s WHERE s.model= :model";
+        
+        TypedQuery<String> tq = em.createQuery(query, String.class);
+        
+        List<String> list = null;
+        
+        try {
+            list = tq.getResultList();
+            for( String s : list){
+                System.out.println(s);
+            
+            }
+
+            if (list == null || list.size() == 0) {
+                return null;
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+       
+        return list;
+    }
+    
 }
+
+
