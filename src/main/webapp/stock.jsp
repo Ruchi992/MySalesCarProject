@@ -48,7 +48,7 @@
             </tr>
             <c:forEach items="${list}" var="item">
                 <tr>
-                    <td><a href="AccountDrillDown?id=${item.listingNumber}">${item.listingNumber}</a></td>
+                    <td><a href="StockDrillDown?id=${item.listingNumber}">${item.listingNumber}</a></td>
                     <td>${item.year}</td>
                     <td>${item.reg}</td>
                     <td>${item.make}</td>
