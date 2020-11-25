@@ -41,17 +41,17 @@ public class StockDrillDownServlet extends HttpServlet
 		{
 			int stockId = 0;
 
-			String address = "/showSaleStock.jsp";
+			String address = "/stockDetail.jsp";
 			SalesStock s = null;
 
 			try
 			{
-				System.out.println("PropertyDrillDowm try");
+				System.out.println("StockDrillDowm try");
 				stockId = Integer.parseInt(request.getParameter("id"));
 				s = StockDB.getSalesStockByID(stockId);
 
 				ArrayList<String> images = new ArrayList<>();
-				String path = ("images/properties/large/" + s.getListingNumber());
+				String path = ("images/large/" + s.getListingNumber());
 				File dir = new File(request.getServletContext().getRealPath(path));
 				for (String file : dir.list())
 				{
@@ -65,15 +65,15 @@ public class StockDrillDownServlet extends HttpServlet
 			}
 			catch (Exception ex)
 			{
-				address = "/Error.jsp";
+				address = "/error.jsp";
 				ex.printStackTrace();
 			}
 
 			if (s == null)
 			{
-				System.out.println("SalesStockDrillDowm : p null");
+				System.out.println("SalesStockDrillDowm : s null");
 
-				address = "/Error.jsp";
+				address = "/error.jsp";
 			}
 			//request.setAttribute("propertytypes", pt);
 			request.setAttribute("salesstock", s);
