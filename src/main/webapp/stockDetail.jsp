@@ -4,15 +4,29 @@
 
 <html>
     <head><title>Limerick Motor </title>
+	<LINK REL=STYLESHEET HREF="assets/css/style.css" TYPE="text/css">
  </head>
     <body>
           <h1>Drill Down on ${salesstock.listingNumber}</h1>
-        <table  width='200' >
-            <tr><td>Account ID</td><td>${salesstock.year}</td>  </TR>
-            <tr><td>First Name</td><td>${salesstock.reg}</td>  </TR>
-            <tr><td>Last Name</td><td>${salesstock.make}</td></TR>
-            <tr><td>Sort Code</td><td>${salesstock.model}</td></TR>
-            <tr><td>Balance</td><td>${salesstock.description}</td></TR>
+        <table>
+			<tr>
+				<td>Image</td>
+				<td>Year</td>
+				<td>Registration</td>
+				<td>Make</td>
+				<td>Model</td>
+				<td> Engine</td>
+				<td>Body</td>
+			</TR> 
+			<c:forEach items="${list}" var="salesstock">
+				<tr><td><img src="assets/Images/Thumbs/${salesstock.listingNumber}.JPG"></td>
+			 <td>${salesstock.year}</td> 
+            <td>${salesstock.reg}</td> 
+            <td>${salesstock.make}</td>
+            <td>${salesstock.model}</td>
+			<td>${salesstock.engine}</td>
+			<td>${salesstock.body}</td></TR>  
+			</c:forEach>
         </table>
         
         <a href="index.jsp">Home</a>

@@ -8,8 +8,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
     <head>
-        <LINK REL=STYLESHEET HREF="assets/css/style.css" TYPE="text/css">
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<LINK REL=STYLESHEET HREF="assets/css/style.css" TYPE="text/css">
         <title>Moylish Motor</title>
 	<h1> Welcome to the Moylish Motor's</h1>
     </head>
@@ -34,7 +35,7 @@
             <select name="year">
 				<option value=""></option>
 				<c:forEach items="${year}" var="yr">
-					<option value="${ye}">${yr}</option>
+					<option value="${yr}">${yr}</option>
 				</c:forEach>
 			</select>
 			  <label> Colour</label>
@@ -79,7 +80,7 @@
             
             <c:forEach items="${list}" var="mk">
                 <tr>
-                    <td><a href="SalesStockDrillDown?stockId=${mk.stockId}"><img src="images//thumbs/${mk.make}"/></a></td>
+                    <td><a href="SalesStockDrillDown?=${mk.stockId}"><img src="images//thumbs/${mk.make}"/></a></td>
                     <td>${mk.model}, ${mk.year}</td>                  
                     
                     <td>${mk.colour}</td>

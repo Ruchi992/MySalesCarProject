@@ -37,11 +37,11 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
              
         try ( PrintWriter out = response.getWriter()) {             
              address = "/index.jsp";
-            System.out.println("Made it");
+            System.out.println("This is it");
             
             try { 
 				                
-                List<String> model = StockDB.getModel();
+                List<String> model = CarTableDB.getModel();
                 if (model == null) {
                     model= new ArrayList();
                 }
@@ -53,7 +53,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
                  //session.setAttribute("favourite", favourite);
                  
                 
-                List<String> make = StockDB.getMake();
+                List<String> make = CarTableDB.getMake();
 				
 				if (make == null) {
 					make = new ArrayList();
@@ -61,13 +61,13 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
 				request.setAttribute("make",make);
 					System.out.println("moylishmotors.Search.processRequest() +make" + make);			
                   
-					List<String> year = StockDB.getYear();
+					List<String> year = CarTableDB.getYear();
 					if(year == null){
 						year = new ArrayList();
 					}
 					request.setAttribute("year", year);
 					
-					List<String> colour = StockDB.getColour();
+					List<String> colour = CarTableDB.getColour();
 					if(colour == null){
 						colour = new ArrayList();
 					}

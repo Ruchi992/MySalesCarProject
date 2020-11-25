@@ -30,6 +30,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 {
 	@NamedQuery(name = "Cartable.findAll", query = "SELECT c FROM Cartable c"),
 	@NamedQuery(name = "Cartable.findById", query = "SELECT c FROM Cartable c WHERE c.id = :id"),
+	@NamedQuery(name = "Cartable.findByYear", query = "SELECT c FROM Cartable c WHERE c.year = :year"),
+	@NamedQuery(name = "Cartable.findByReg", query = "SELECT c FROM Cartable c WHERE c.reg = :reg"),
+	@NamedQuery(name = "Cartable.findByMake", query = "SELECT c FROM Cartable c WHERE c.make = :make"),
+	@NamedQuery(name = "Cartable.findByModel", query = "SELECT c FROM Cartable c WHERE c.model = :model"),
+	@NamedQuery(name = "Cartable.findByColour", query = "SELECT c FROM Cartable c WHERE c.colour = :colour"),	
 	@NamedQuery(name = "Cartable.findByListingNumber", query = "SELECT c FROM Cartable c WHERE c.listingNumber = :listingNumber"),
 	@NamedQuery(name = "Cartable.findByEngine", query = "SELECT c FROM Cartable c WHERE c.engine = :engine")
 })
@@ -42,7 +47,7 @@ public class Cartable implements Serializable
     @Basic(optional = false)
     @Column(name = "Id")
 	private Integer id;
-	@Column(name = "Listing Number")
+	@Column(name = "ListingNumber")
 	private Integer listingNumber;
 	@Lob
     @Size(max = 65535)
@@ -175,7 +180,8 @@ public class Cartable implements Serializable
 	@Override
 	public String toString()
 	{
-		return "moylishmotors.Cartable[ id=" + id + " ]";
+		return "Cartable{" + "id=" + id + ", listingNumber=" + listingNumber + ", reg=" + reg + ", model=" + model + ", make=" + make + ", year=" + year + ", colour=" + colour + ", engine=" + engine + ", body=" + body + '}';
 	}
+	
 	
 }
