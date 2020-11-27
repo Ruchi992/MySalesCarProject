@@ -36,7 +36,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
           
              
         try ( PrintWriter out = response.getWriter()) {             
-             address = "/index.jsp";
+             address = "/search.jsp";
             System.out.println("This is it");
             
             try { 
@@ -72,6 +72,12 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
 						colour = new ArrayList();
 					}
 					request.setAttribute("colour", colour);
+					
+					List<String> fuel = FuelTableDB.getFuelType();
+					if(fuel == null){
+						fuel = new ArrayList();
+					}
+					request.setAttribute("fuel", fuel);
 				} catch (Exception ex) {
                 address = "/Error.jsp";
                 System.out.println(ex);

@@ -37,6 +37,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Usertable implements Serializable
 {
 
+	@Size(max = 50)
+    @Column(name = "username")
+	private String username;
+
 	private static final long serialVersionUID = 1L;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -129,6 +133,14 @@ public class Usertable implements Serializable
 	public String toString()
 	{
 		return "moylishmotors.Usertable[ id=" + id + " ]";
+	}
+	public String getUsername()
+	{
+		return username;
+	}
+	public void setUsername(String username)
+	{
+		this.username = username;
 	}
 	
 }

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import moylishmotors.CarTableDB;
 import moylishmotors.Cartable;
+import moylishmotors.FuelTable;
+import moylishmotors.FuelTableDB;
 import moylishmotors.SalesStock;
 import moylishmotors.StockDB;
 
@@ -54,8 +56,11 @@ public class StockDrillDownServlet extends HttpServlet
 				String make = request.getParameter("make");
 				String year = request.getParameter("year");
 				String colour = request.getParameter("colour");
+				String fuel = request.getParameter("fuel");
+				List<FuelTable> list = FuelTableDB.getFuel(fuel);
+				request.setAttribute("list", list);
 				
-				List<Cartable> list = CarTableDB.Search(model, make, year, colour);
+				//List<Cartable> list = CarTableDB.Search(model, make, year, colour);
 				request.setAttribute("list", list);
 
 //				ArrayList<String> images = new ArrayList<>();

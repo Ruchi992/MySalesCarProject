@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 26 Nov 2020, 22:06:50
+    Document   : Search
+    Created on : 26 Nov 2020, 22:09:59
     Author     : Ruchi Devi <https://github.com/Ruchi992>
 --%>
 
@@ -9,10 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home</title>
+        <title>JSP Page</title>
     </head>
     <body>
-      <h3>This is the home page for my applications and is visible to everyone</h3>
-      <a href="login.jsp">Login</a>
+        <h1>Search for Car detail</h1>
     </body>
 </html>
