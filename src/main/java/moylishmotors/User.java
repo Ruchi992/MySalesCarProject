@@ -23,40 +23,36 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Ruchi Devi <https://github.com/Ruchi992>
  */
 @Entity
-@Table(name = "fuel_table")
+@Table(name = "user")
 @XmlRootElement
 @NamedQueries(
 {
-	@NamedQuery(name = "FuelTable.findAll", query = "SELECT f FROM FuelTable f"),
-	@NamedQuery(name = "FuelTable.findByFuel", query = "SELECT f FROM FuelTable f WHERE f.fuel = :fuel"),
-	@NamedQuery(name = "FuelTable.findById", query = "SELECT f FROM FuelTable f WHERE f.id = :id")
+	@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
+	@NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id"),
+	@NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
+	@NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")
 })
-public class FuelTable implements Serializable
+public class User implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
-	@Size(max = 50)
-    @Column(name = "Fuel")
-	private String fuel;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "Id")
 	private Integer id;
-	public FuelTable()
+	@Size(max = 50)
+    @Column(name = "username")
+	private String username;
+	@Size(max = 45)
+    @Column(name = "Password")
+	private String password;
+	public User()
 	{
 	}
-	public FuelTable(Integer id)
+	public User(Integer id)
 	{
 		this.id = id;
-	}
-	public String getFuel()
-	{
-		return fuel;
-	}
-	public void setFuel(String fuel)
-	{
-		this.fuel = fuel;
 	}
 	public Integer getId()
 	{
@@ -65,6 +61,22 @@ public class FuelTable implements Serializable
 	public void setId(Integer id)
 	{
 		this.id = id;
+	}
+	public String getUsername()
+	{
+		return username;
+	}
+	public void setUsername(String username)
+	{
+		this.username = username;
+	}
+	public String getPassword()
+	{
+		return password;
+	}
+	public void setPassword(String password)
+	{
+		this.password = password;
 	}
 	@Override
 	public int hashCode()
@@ -77,11 +89,11 @@ public class FuelTable implements Serializable
 	public boolean equals(Object object)
 	{
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof FuelTable))
+		if (!(object instanceof User))
 		{
 			return false;
 		}
-		FuelTable other = (FuelTable) object;
+		User other = (User) object;
 		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
 		{
 			return false;
@@ -91,8 +103,7 @@ public class FuelTable implements Serializable
 	@Override
 	public String toString()
 	{
-		return "FuelTable{" + "fuel=" + fuel + ", id=" + id + '}';
+		return "moylishmotors.User[ id=" + id + " ]";
 	}
-	
 	
 }

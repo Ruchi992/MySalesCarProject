@@ -7,7 +7,7 @@ package moylishmotors.repositories;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import moylishmotors.Cartable;
+import moylishmotors.Car;
 import moylishmotors.Salespeoplelisting;
 
 /**

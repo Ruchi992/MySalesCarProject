@@ -1,29 +1,27 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package moylishmotors.web.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import moylishmotors.repositories.CarTableDB;
-import moylishmotors.Car;
-import moylishmotors.Fuel;
-import moylishmotors.SalesStock;
-import moylishmotors.repositories.FuelTableDB;
 
 /**
  *
  * @author Ruchi Devi <https://github.com/Ruchi992>
  */
-@WebServlet(name = "CarSearchResults", urlPatterns =
+@WebServlet(name = "Addavourites", urlPatterns =
 {
-	"/CarSearchResults"
+	"/Addavourites"
 })
-public class CarSearchResultsServlet extends HttpServlet
+public class Addavourites extends HttpServlet
 {
 
 	/**
@@ -39,53 +37,18 @@ public class CarSearchResultsServlet extends HttpServlet
 			throws ServletException, IOException
 	{
 		response.setContentType("text/html;charset=UTF-8");
+		try (PrintWriter out = response.getWriter())
 		{
-			int stockId = 0;
-
-			String address = "/carsearchresults.jsp";
-			SalesStock s = null;
-
-			try
-			{
-				System.out.println("StockDrillDowm try");
-				String model = request.getParameter("model");
-				String make = request.getParameter("make");
-				String year = request.getParameter("year");
-				String colour = request.getParameter("colour");
-				String fuel = request.getParameter("fuel");
-				
-
-				List<Car> list = CarTableDB.Search(model, make, year, colour, fuel);
-				request.setAttribute("list", list);
-
-//				ArrayList<String> images = new ArrayList<>();
-//				String path = ("images/large/" + s.getListingNumber());
-//				File dir = new File(request.getServletContext().getRealPath(path));
-//				for (String file : dir.list())
-//				{
-//					if (!file.equals("thumbs.db"))
-//					{
-//						images.add(path);
-//					}
-//				}
-//				request.setAttribute("images", images);
-			}
-			catch (Exception ex)
-			{
-				address = "/error.jsp";
-				ex.printStackTrace();
-			}
-
-//			if (s == null)
-//			{
-//				System.out.println("SalesStockDrillDowm : s null");
-//
-//				address = "/error.jsp";
-//			}
-			//request.setAttribute("propertytypes", pt);
-			request.setAttribute("salesstock", s);
-			RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-			dispatcher.forward(request, response);
+			/* TODO output your page here. You may use following sample code. */
+			out.println("<!DOCTYPE html>");
+			out.println("<html>");
+			out.println("<head>");
+			out.println("<title>Servlet Addavourites</title>");			
+			out.println("</head>");
+			out.println("<body>");
+			out.println("<h1>Servlet Addavourites at " + request.getContextPath() + "</h1>");
+			out.println("</body>");
+			out.println("</html>");
 		}
 	}
 

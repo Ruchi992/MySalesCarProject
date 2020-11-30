@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import moylishmotors.repositories.CarTableDB;
-import moylishmotors.Cartable;
+import moylishmotors.Car;
 import moylishmotors.Lastpreviousowners;
 import moylishmotors.Salespeople;
 import moylishmotors.Salespeoplelisting;
@@ -55,7 +55,7 @@ public class CarDetailsServlet extends HttpServlet
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("requestId", requestId);
-			  Cartable car = CarTableDB.getByLinstingNumber(listingNumber);
+			  Car car = CarTableDB.getByLinstingNumber(listingNumber);
 			
 			request.setAttribute("car", car);
 			//request.setAttribute("propertytypes", pt);

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import moylishmotors.Cartable;
+import moylishmotors.Car;
 
 /**
  *
@@ -18,12 +18,12 @@ import moylishmotors.Cartable;
 public class CarTableDB
 {
 
-	public static List<Cartable> getAllCars()
+	public static List<Car> getAllCars()
 	{
 		EntityManager entityManager = DBUtil.getEntityManagerFactory().createEntityManager();
-		String sql = "SELECT c FROM Cartable c";
+		String sql = "SELECT c FROM Car c";
 
-		TypedQuery<Cartable> typedQuery = entityManager.createQuery(sql, Cartable.class);
+		TypedQuery<Car> typedQuery = entityManager.createQuery(sql, Car.class);
 		try
 		{
 			return typedQuery.getResultList();
@@ -39,7 +39,7 @@ public class CarTableDB
 		EntityManager entityManager = DBUtil.getEntityManagerFactory().createEntityManager();
 		System.out.println("new");
 
-		String query = "SELECT c.model FROM Cartable c";
+		String query = "SELECT c.model FROM Car c";
 
 		TypedQuery<String> tq = entityManager.createQuery(query, String.class);
 		List<String> list = null;
@@ -61,7 +61,7 @@ public class CarTableDB
 		EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
 		System.out.println("SalesStock getMake");
 
-		String query = "SELECT c.year FROM Cartable c";
+		String query = "SELECT c.year FROM Car c";
 
 		TypedQuery<String> tq = em.createQuery(query, String.class);
 
@@ -96,7 +96,7 @@ public class CarTableDB
 		EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
 		System.out.println("SalesStock getMake");
 
-		String query = "SELECT c.make FROM Cartable c";
+		String query = "SELECT c.make FROM Car c";
 
 		TypedQuery<String> tq = em.createQuery(query, String.class);
 
@@ -131,7 +131,7 @@ public class CarTableDB
 		EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
 		System.out.println("SalesStock getyear");
 
-		String query = "SELECT c.colour FROM Cartable c";
+		String query = "SELECT c.colour FROM Car c";
 
 		TypedQuery<String> tq = em.createQuery(query, String.class);
 
@@ -162,7 +162,7 @@ public class CarTableDB
 
 		return list;
 	}
-	public static List<Cartable> Search(String model, String make, String year, String colour, String fuel)
+	public static List<Car> Search(String model, String make, String year, String colour, String fuel)
 	{
 		EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
 		System.out.println("SalesStock search *** ----");
@@ -172,9 +172,9 @@ public class CarTableDB
 		System.out.println("SalesStock colour:" + colour);
         System.out.println("SalesStock colour:" + fuel);
 //        String query = "SELECT c.model, c.make, c.year, c.colour, c.engine, c.body FROM Cartable c WHERE c.make = :make and c.model =:model and c.year =:year and c.colour =:colour";
-		String query = "SELECT c FROM Cartable c WHERE c.make = :make and c.model =:model and c.year =:year and c.colour =:colour and c.fuel=:fuel";
+		String query = "SELECT c FROM Car c WHERE c.make = :make and c.model =:model and c.year =:year and c.colour =:colour and c.fuel=:fuel";
 
-		TypedQuery<Cartable> tq = em.createQuery(query, Cartable.class)
+		TypedQuery<Car> tq = em.createQuery(query, Car.class)
 				.setParameter("make", make)
 				.setParameter("model", model)
 				.setParameter("year", year)
@@ -182,7 +182,7 @@ public class CarTableDB
 				.setParameter("fuel", fuel)
 				;
 
-		List<Cartable> list = null;
+		List<Car> list = null;
 
 		try
 		{
@@ -209,12 +209,12 @@ public class CarTableDB
 		return list;
 	}
 	
-	public static Cartable getByLinstingNumber(int listingNumber)
+	public static Car getByLinstingNumber(int listingNumber)
 	{		
 			EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
-			String query = "SELECT c FROM Cartable c WHERE c.listingNumber = :listingNumber";
+			String query = "SELECT c FROM Car c WHERE c.listingNumber = :listingNumber";
 
-		TypedQuery<Cartable> tq = em.createQuery(query, Cartable.class)
+		TypedQuery<Car> tq = em.createQuery(query, Car.class)
 				.setParameter("listingNumber",listingNumber );
 		
 				try{
@@ -227,7 +227,7 @@ public class CarTableDB
 		}
 	}
 	
-	public static Cartable getById(int id)
+	public static Car getById(int id)
 	{
 //		Cartable car = new Cartable();
 //		car.setId(1);
@@ -239,7 +239,7 @@ public class CarTableDB
 		EntityManager entityManager = DBUtil.getEntityManagerFactory().createEntityManager();
 		try
 		{
-			return entityManager.find(Cartable.class, id);
+			return entityManager.find(Car.class, id);
 		}
 		finally
 		{

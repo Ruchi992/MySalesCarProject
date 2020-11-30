@@ -83,7 +83,7 @@ public class CarSearchServlet extends HttpServlet
 			}
 			catch (Exception ex)
 			{
-				address = "/Error.jsp";
+				address = "/error.jsp";
 				System.out.println(ex);
 			}
 

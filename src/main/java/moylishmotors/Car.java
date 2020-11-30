@@ -24,17 +24,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Ruchi Devi <https://github.com/Ruchi992>
  */
 @Entity
-@Table(name = "cartable")
+@Table(name = "car")
 @XmlRootElement
 @NamedQueries(
 {
-	@NamedQuery(name = "Cartable.findAll", query = "SELECT c FROM Cartable c"),
-	@NamedQuery(name = "Cartable.findByListingNumber", query = "SELECT c FROM Cartable c WHERE c.listingNumber = :listingNumber"),
-	@NamedQuery(name = "Cartable.findByEngine", query = "SELECT c FROM Cartable c WHERE c.engine = :engine"),
-	@NamedQuery(name = "Cartable.findByOdometerKPH", query = "SELECT c FROM Cartable c WHERE c.odometerKPH = :odometerKPH"),
-	@NamedQuery(name = "Cartable.findById", query = "SELECT c FROM Cartable c WHERE c.id = :id")
+	@NamedQuery(name = "Car.findAll", query = "SELECT c FROM Car c"),
+	@NamedQuery(name = "Car.findByListingNumber", query = "SELECT c FROM Car c WHERE c.listingNumber = :listingNumber"),
+	@NamedQuery(name = "Car.findByEngine", query = "SELECT c FROM Car c WHERE c.engine = :engine"),
+	@NamedQuery(name = "Car.findByOdometerKPH", query = "SELECT c FROM Car c WHERE c.odometerKPH = :odometerKPH"),
+	@NamedQuery(name = "Car.findById", query = "SELECT c FROM Car c WHERE c.id = :id")
 })
-public class Cartable implements Serializable
+public class Car implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
@@ -82,10 +82,10 @@ public class Cartable implements Serializable
     @Basic(optional = false)
     @Column(name = "Id")
 	private Integer id;
-	public Cartable()
+	public Car()
 	{
 	}
-	public Cartable(Integer id)
+	public Car(Integer id)
 	{
 		this.id = id;
 	}
@@ -196,16 +196,22 @@ public class Cartable implements Serializable
 	public boolean equals(Object object)
 	{
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof Cartable))
+		if (!(object instanceof Car))
 		{
 			return false;
 		}
-		Cartable other = (Cartable) object;
+		Car other = (Car) object;
 		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
 		{
 			return false;
 		}
 		return true;
 	}
+	@Override
+	public String toString()
+	{
+		return "Car{" + "listingNumber=" + listingNumber + ", reg=" + reg + ", make=" + make + ", model=" + model + ", colour=" + colour + ", year=" + year + ", engine=" + engine + ", body=" + body + ", fuel=" + fuel + ", odometerKPH=" + odometerKPH + ", transmission=" + transmission + ", id=" + id + '}';
+	}
+	
 	
 }

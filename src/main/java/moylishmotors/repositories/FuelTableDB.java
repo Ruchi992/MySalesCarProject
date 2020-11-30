@@ -8,7 +8,7 @@ package moylishmotors.repositories;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import moylishmotors.FuelTable;
+import moylishmotors.Fuel;
 import moylishmotors.Salespeople;
 
 /**
@@ -17,16 +17,16 @@ import moylishmotors.Salespeople;
  */
 public class FuelTableDB
 {
-	public static FuelTable getFuel(String fuel)
+	public static Fuel getFuel(String fuel)
 	{
 	EntityManager entityManager = DBUtil.getEntityManagerFactory().createEntityManager();
 		String sql = "SELECT f FROM FuelTable f WHERE f.fuel = :fuel";
 
-		TypedQuery<FuelTable> typedQuery = entityManager.createQuery(sql, FuelTable.class)
+		TypedQuery<Fuel> typedQuery = entityManager.createQuery(sql, Fuel.class)
 				.setParameter("fuel", fuel);
 		try{
 			System.out.println("********************* getAllSalespeoples ");
-			FuelTable result = typedQuery.getSingleResult();
+			Fuel result = typedQuery.getSingleResult();
 		 System.out.println("ResultList" +  result);
 			
 			return result;
@@ -65,7 +65,7 @@ public class FuelTableDB
        
         return list;
     }
-	public static FuelTable getFuel(FuelTable fuel)
+	public static Fuel getFuel(Fuel fuel)
 	{
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
