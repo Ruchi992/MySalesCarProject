@@ -1,4 +1,4 @@
-package moylishmotors;
+package moylishmotors.repositories;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

@@ -16,6 +16,6 @@
         <br>
         <h3>It should be visible to authenticated users only</h3> 
         <br>
-       <a href="/MoylishMotors/logout">Log Out</a>
+       <a href="/moylishmotors/logout">Log Out</a>
     </body>
 </html>

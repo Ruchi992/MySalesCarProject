@@ -1,8 +1,3 @@
-<%--
-    Document   : stock
-    Created on : 11 Nov 2020, 12:42:54
-    Author     : Mark Crowe <https://github.com/markcrowe-com>
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -48,7 +43,7 @@
             </tr>
             <c:forEach items="${list}" var="item">
                 <tr>
-                    <td><a href="StockDrillDown?id=${item.listingNumber}">${item.listingNumber}</a></td>
+                    <td><a href="StockDrillDown?id=${item.id}">${item.listingNumber}</a></td>
                     <td>${item.year}</td>
                     <td>${item.reg}</td>
                     <td>${item.make}</td>

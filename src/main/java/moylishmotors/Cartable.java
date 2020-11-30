@@ -29,24 +29,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries(
 {
 	@NamedQuery(name = "Cartable.findAll", query = "SELECT c FROM Cartable c"),
-	@NamedQuery(name = "Cartable.findById", query = "SELECT c FROM Cartable c WHERE c.id = :id"),
-	@NamedQuery(name = "Cartable.findByYear", query = "SELECT c FROM Cartable c WHERE c.year = :year"),
-	@NamedQuery(name = "Cartable.findByReg", query = "SELECT c FROM Cartable c WHERE c.reg = :reg"),
-	@NamedQuery(name = "Cartable.findByMake", query = "SELECT c FROM Cartable c WHERE c.make = :make"),
-	@NamedQuery(name = "Cartable.findByModel", query = "SELECT c FROM Cartable c WHERE c.model = :model"),
-	@NamedQuery(name = "Cartable.findByColour", query = "SELECT c FROM Cartable c WHERE c.colour = :colour"),	
 	@NamedQuery(name = "Cartable.findByListingNumber", query = "SELECT c FROM Cartable c WHERE c.listingNumber = :listingNumber"),
-	@NamedQuery(name = "Cartable.findByEngine", query = "SELECT c FROM Cartable c WHERE c.engine = :engine")
+	@NamedQuery(name = "Cartable.findByEngine", query = "SELECT c FROM Cartable c WHERE c.engine = :engine"),
+	@NamedQuery(name = "Cartable.findByOdometerKPH", query = "SELECT c FROM Cartable c WHERE c.odometerKPH = :odometerKPH"),
+	@NamedQuery(name = "Cartable.findById", query = "SELECT c FROM Cartable c WHERE c.id = :id")
 })
 public class Cartable implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "Id")
-	private Integer id;
 	@Column(name = "ListingNumber")
 	private Integer listingNumber;
 	@Lob
@@ -55,20 +46,20 @@ public class Cartable implements Serializable
 	private String reg;
 	@Lob
     @Size(max = 65535)
-    @Column(name = "Model")
-	private String model;
-	@Lob
-    @Size(max = 65535)
     @Column(name = "Make")
 	private String make;
 	@Lob
     @Size(max = 65535)
-    @Column(name = "Year")
-	private String year;
+    @Column(name = "Model")
+	private String model;
 	@Lob
     @Size(max = 65535)
     @Column(name = "Colour")
 	private String colour;
+	@Lob
+    @Size(max = 65535)
+    @Column(name = "Year")
+	private String year;
 	// @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
 	@Column(name = "Engine")
 	private Double engine;
@@ -76,18 +67,25 @@ public class Cartable implements Serializable
     @Size(max = 65535)
     @Column(name = "Body")
 	private String body;
+	@Lob
+    @Size(max = 65535)
+    @Column(name = "Fuel")
+	private String fuel;
+	@Column(name = "OdometerKPH")
+	private Integer odometerKPH;
+	@Lob
+    @Size(max = 65535)
+    @Column(name = "Transmission")
+	private String transmission;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "Id")
+	private Integer id;
 	public Cartable()
 	{
 	}
 	public Cartable(Integer id)
-	{
-		this.id = id;
-	}
-	public Integer getId()
-	{
-		return id;
-	}
-	public void setId(Integer id)
 	{
 		this.id = id;
 	}
@@ -107,14 +105,6 @@ public class Cartable implements Serializable
 	{
 		this.reg = reg;
 	}
-	public String getModel()
-	{
-		return model;
-	}
-	public void setModel(String model)
-	{
-		this.model = model;
-	}
 	public String getMake()
 	{
 		return make;
@@ -123,13 +113,13 @@ public class Cartable implements Serializable
 	{
 		this.make = make;
 	}
-	public String getYear()
+	public String getModel()
 	{
-		return year;
+		return model;
 	}
-	public void setYear(String year)
+	public void setModel(String model)
 	{
-		this.year = year;
+		this.model = model;
 	}
 	public String getColour()
 	{
@@ -138,6 +128,14 @@ public class Cartable implements Serializable
 	public void setColour(String colour)
 	{
 		this.colour = colour;
+	}
+	public String getYear()
+	{
+		return year;
+	}
+	public void setYear(String year)
+	{
+		this.year = year;
 	}
 	public Double getEngine()
 	{
@@ -154,6 +152,38 @@ public class Cartable implements Serializable
 	public void setBody(String body)
 	{
 		this.body = body;
+	}
+	public String getFuel()
+	{
+		return fuel;
+	}
+	public void setFuel(String fuel)
+	{
+		this.fuel = fuel;
+	}
+	public Integer getOdometerKPH()
+	{
+		return odometerKPH;
+	}
+	public void setOdometerKPH(Integer odometerKPH)
+	{
+		this.odometerKPH = odometerKPH;
+	}
+	public String getTransmission()
+	{
+		return transmission;
+	}
+	public void setTransmission(String transmission)
+	{
+		this.transmission = transmission;
+	}
+	public Integer getId()
+	{
+		return id;
+	}
+	public void setId(Integer id)
+	{
+		this.id = id;
 	}
 	@Override
 	public int hashCode()
@@ -177,11 +207,5 @@ public class Cartable implements Serializable
 		}
 		return true;
 	}
-	@Override
-	public String toString()
-	{
-		return "Cartable{" + "id=" + id + ", listingNumber=" + listingNumber + ", reg=" + reg + ", model=" + model + ", make=" + make + ", year=" + year + ", colour=" + colour + ", engine=" + engine + ", body=" + body + '}';
-	}
-	
 	
 }

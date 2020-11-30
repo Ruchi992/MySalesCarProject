@@ -1,8 +1,9 @@
-package moylishmotors;
+package moylishmotors.repositories;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import moylishmotors.SalesStock;
 
 public class StockDB
 {
@@ -18,6 +19,19 @@ public class StockDB
 		}
 		finally
 		{
+			entityManager.close();
+		}
+	}
+	public SalesStock getStockById(int id)
+	{
+		EntityManager entityManager = DBUtil.getEntityManagerFactory().createEntityManager();
+		try
+		{
+			return entityManager.find(SalesStock.class, id);
+		}
+		finally
+		{
+
 			entityManager.close();
 		}
 	}

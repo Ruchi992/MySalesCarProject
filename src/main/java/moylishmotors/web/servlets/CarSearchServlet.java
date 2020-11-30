@@ -1,6 +1,5 @@
 package moylishmotors.web.servlets;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -11,90 +10,91 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import moylishmotors.CarTableDB;
-import moylishmotors.Cartable;
-import moylishmotors.FuelTable;
-import moylishmotors.FuelTableDB;
-import moylishmotors.SalesStock;
-import moylishmotors.StockDB;
+import moylishmotors.repositories.CarTableDB;
+import moylishmotors.repositories.FuelTableDB;
 
 /**
  *
  * @author Ruchi Devi <https://github.com/Ruchi992>
  */
-@WebServlet(name = "SalesStockDrillDown", urlPatterns =
+@WebServlet(name = "CarSearch", urlPatterns =
 {
-	"/SalesStockDrillDown"
+	"/CarSearch"
 })
-public class StockDrillDownServlet extends HttpServlet
+public class CarSearchServlet extends HttpServlet
 {
 
-	/**
-	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-	 * methods.
-	 *
-	 * @param request servlet request
-	 * @param response servlet response
-	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException if an I/O error occurs
-	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
 		response.setContentType("text/html;charset=UTF-8");
+		int BuyPrice = 0;
+		String address;
+
 		try (PrintWriter out = response.getWriter())
 		{
-			int stockId = 0;
-
-			String address = "/stockDetail.jsp";
-			SalesStock s = null;
+			address = "/search.jsp";
+			System.out.println("This is it");
 
 			try
 			{
-				System.out.println("StockDrillDowm try");
-				String model = request.getParameter("model");
-				String make = request.getParameter("make");
-				String year = request.getParameter("year");
-				String colour = request.getParameter("colour");
-				String fuel = request.getParameter("fuel");
-				List<FuelTable> list = FuelTableDB.getFuel(fuel);
-				request.setAttribute("list", list);
-				
-				//List<Cartable> list = CarTableDB.Search(model, make, year, colour);
-				request.setAttribute("list", list);
 
-//				ArrayList<String> images = new ArrayList<>();
-//				String path = ("images/large/" + s.getListingNumber());
-//				File dir = new File(request.getServletContext().getRealPath(path));
-//				for (String file : dir.list())
-//				{
-//					if (!file.equals("thumbs.db"))
-//					{
-//						images.add(path);
-//					}
-//				}
-//				request.setAttribute("images", images);
+				List<String> model = CarTableDB.getModel();
+				if (model == null)
+				{
+					model = new ArrayList();
+				}
+				request.setAttribute("model", model);
+				System.out.println("moylishmotors.Search.processRequest() + model" + model);
+				//storing favourite in session
+				//String favourite =request.getParameter("favourite");
+				//HttpSession session=request.getSession(); 
+				//session.setAttribute("favourite", favourite);
 
+				List<String> make = CarTableDB.getMake();
+
+				if (make == null)
+				{
+					make = new ArrayList();
+				}
+				request.setAttribute("make", make);
+				System.out.println("moylishmotors.Search.processRequest() +make" + make);
+
+				List<String> year = CarTableDB.getYear();
+				if (year == null)
+				{
+					year = new ArrayList();
+				}
+				request.setAttribute("year", year);
+
+				List<String> colour = CarTableDB.getColour();
+				if (colour == null)
+				{
+					colour = new ArrayList();
+				}
+				request.setAttribute("colour", colour);
+
+				List<String> fuel = FuelTableDB.getFuelType();
+				if (fuel == null)
+				{
+					fuel = new ArrayList();
+				}
+				request.setAttribute("fuel", fuel);
 			}
 			catch (Exception ex)
 			{
-				address = "/error.jsp";
-				ex.printStackTrace();
+				address = "/Error.jsp";
+				System.out.println(ex);
 			}
 
-//			if (s == null)
-//			{
-//				System.out.println("SalesStockDrillDowm : s null");
-//
-//				address = "/error.jsp";
-//			}
-			//request.setAttribute("propertytypes", pt);
-//			request.setAttribute("salesstock", s);
+			// list =StockDB.getStockByMakeAndBuyPrice( minprice, maxprice);
+//                for(Properties p : list)
+//                    System.out.println("GetAllProperties p: " + p.toString());
+			//end catch
 			RequestDispatcher dispatcher = request.getRequestDispatcher(address);
 			dispatcher.forward(request, response);
 		}
 	}
-
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 	/**
 	 * Handles the HTTP <code>GET</code> method.

@@ -9,6 +9,8 @@
     <class>moylishmotors.FuelTable</class>
     <class>moylishmotors.Carpricetable</class>
     <class>moylishmotors.Userroles</class>
+    <class>moylishmotors.Salespeoplelisting</class>
+    <class>moylishmotors.Lastpreviousowners</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sales_stock?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

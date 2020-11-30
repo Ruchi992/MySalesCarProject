@@ -4,10 +4,11 @@
 
 <html>
     <head><title>Limerick Motor </title>
-	<LINK REL=STYLESHEET HREF="assets/css/style.css" TYPE="text/css">
- </head>
+		<LINK REL=STYLESHEET HREF="assets/css/style.css" TYPE="text/css">
+	</head>
     <body>
-          <h1>Drill Down on ${salesstock.listingNumber}</h1>
+		<a href="index.jsp">Home</a>
+		<h1>${car.listingNumber} Details</h1>
         <table>
 			<tr>
 				<td>Image</td>
@@ -17,23 +18,26 @@
 				<td>Model</td>
 				<td> Engine</td>
 				<td>Body</td>
-			</TR> 
-			<c:forEach items="${list}" var="salesstock">
-				<tr><td><img src="assets/Images/Thumbs/${salesstock.listingNumber}.JPG"></td>
-			 <td>${salesstock.year}</td> 
-            <td>${salesstock.reg}</td> 
-            <td>${salesstock.make}</td>
-            <td>${salesstock.model}</td>
-			<td>${salesstock.engine}</td>
-			<td>${salesstock.body}</td></TR>  
-			</c:forEach>
+				<td> Fuel</td>
+			</tr> 
+			<tr>
+				<td>
+					<a href="CarDetails?listingNumber=${car.listingNumber}">
+						<img src="assets/Images/Thumbs/${car.listingNumber}.JPG">
+					</a>
+				</td>
+				<td>${car.year}</td> 
+				<td>${car.reg}</td> 
+				<td>${car.make}</td>
+				<td>${car.model}</td>
+				<td>${car.engine}</td>
+				<td>${car.body}</td> 
+				<td>${car.fuel}</td>
+			</tr>
         </table>
-        
-        <a href="index.jsp">Home</a>
-      
-    </body>
+	</body>
 </html>
-    </body>
+</body>
 </html>
 
 

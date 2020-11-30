@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package moylishmotors;
+package moylishmotors.repositories;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import moylishmotors.FuelTable;
+import moylishmotors.Salespeople;
 
 /**
  *
@@ -15,20 +17,24 @@ import javax.persistence.TypedQuery;
  */
 public class FuelTableDB
 {
-	public static List<FuelTable> getFuel(String fuel)
+	public static FuelTable getFuel(String fuel)
 	{
 	EntityManager entityManager = DBUtil.getEntityManagerFactory().createEntityManager();
-		String sql = "SELECT f FROM FuelTable f";
+		String sql = "SELECT f FROM FuelTable f WHERE f.fuel = :fuel";
 
-		TypedQuery<FuelTable> typedQuery = entityManager.createQuery(sql, FuelTable.class);
-		try
-		{
-			return typedQuery.getResultList();
+		TypedQuery<FuelTable> typedQuery = entityManager.createQuery(sql, FuelTable.class)
+				.setParameter("fuel", fuel);
+		try{
+			System.out.println("********************* getAllSalespeoples ");
+			FuelTable result = typedQuery.getSingleResult();
+		 System.out.println("ResultList" +  result);
+			
+			return result;
 		}
 		finally
 		{
 			entityManager.close();
-		}
+	}
 	}
 	
 	public static List<String> getFuelType() {
@@ -59,5 +65,9 @@ public class FuelTableDB
        
         return list;
     }
+	public static FuelTable getFuel(FuelTable fuel)
+	{
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 	
 }

@@ -9,13 +9,12 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,33 +23,22 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Ruchi Devi <https://github.com/Ruchi992>
  */
 @Entity
-@Table(name = "salespeople")
+@Table(name = "lastpreviousowners")
 @XmlRootElement
 @NamedQueries(
 {
-	@NamedQuery(name = "Salespeople.findAll", query = "SELECT s FROM Salespeople s"),
-	@NamedQuery(name = "Salespeople.findById", query = "SELECT s FROM Salespeople s WHERE s.id = :id")
+	@NamedQuery(name = "Lastpreviousowners.findAll", query = "SELECT l FROM Lastpreviousowners l"),
+	@NamedQuery(name = "Lastpreviousowners.findByListingNumber", query = "SELECT l FROM Lastpreviousowners l WHERE l.listingNumber = :listingNumber")
 })
-public class Salespeople implements Serializable
+public class Lastpreviousowners implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
-	@Lob
-    @Size(max = 65535)
-    @Column(name = "SalesPerson")
-	private String salesPerson;
-	@Lob
-    @Size(max = 65535)
-    @Column(name = "SalesPersonPhone")
-	private String salesPersonPhone;
-	@Lob
-    @Size(max = 65535)
-    @Column(name = "SalesPersonEmail")
-	private String salesPersonEmail;
-	@Lob
-    @Size(max = 65535)
-    @Column(name = "SalesPersonFax")
-	private String salesPersonFax;
+	@Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "ListingNumber")
+	private Integer listingNumber;
 	@Lob
     @Size(max = 65535)
     @Column(name = "LastPreviousOwnersName")
@@ -67,53 +55,20 @@ public class Salespeople implements Serializable
     @Size(max = 65535)
     @Column(name = "FullServiceHistory")
 	private String fullServiceHistory;
-	@Lob
-    @Size(max = 65535)
-    @Column(name = "Note")
-	private String note;
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "Id")
-	private Integer id;
-	public Salespeople()
+	public Lastpreviousowners()
 	{
 	}
-	public Salespeople(Integer id)
+	public Lastpreviousowners(Integer listingNumber)
 	{
-		this.id = id;
+		this.listingNumber = listingNumber;
 	}
-	public String getSalesPerson()
+	public Integer getListingNumber()
 	{
-		return salesPerson;
+		return listingNumber;
 	}
-	public void setSalesPerson(String salesPerson)
+	public void setListingNumber(Integer listingNumber)
 	{
-		this.salesPerson = salesPerson;
-	}
-	public String getSalesPersonPhone()
-	{
-		return salesPersonPhone;
-	}
-	public void setSalesPersonPhone(String salesPersonPhone)
-	{
-		this.salesPersonPhone = salesPersonPhone;
-	}
-	public String getSalesPersonEmail()
-	{
-		return salesPersonEmail;
-	}
-	public void setSalesPersonEmail(String salesPersonEmail)
-	{
-		this.salesPersonEmail = salesPersonEmail;
-	}
-	public String getSalesPersonFax()
-	{
-		return salesPersonFax;
-	}
-	public void setSalesPersonFax(String salesPersonFax)
-	{
-		this.salesPersonFax = salesPersonFax;
+		this.listingNumber = listingNumber;
 	}
 	public String getLastPreviousOwnersName()
 	{
@@ -147,39 +102,23 @@ public class Salespeople implements Serializable
 	{
 		this.fullServiceHistory = fullServiceHistory;
 	}
-	public String getNote()
-	{
-		return note;
-	}
-	public void setNote(String note)
-	{
-		this.note = note;
-	}
-	public Integer getId()
-	{
-		return id;
-	}
-	public void setId(Integer id)
-	{
-		this.id = id;
-	}
 	@Override
 	public int hashCode()
 	{
 		int hash = 0;
-		hash += (id != null ? id.hashCode() : 0);
+		hash += (listingNumber != null ? listingNumber.hashCode() : 0);
 		return hash;
 	}
 	@Override
 	public boolean equals(Object object)
 	{
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof Salespeople))
+		if (!(object instanceof Lastpreviousowners))
 		{
 			return false;
 		}
-		Salespeople other = (Salespeople) object;
-		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
+		Lastpreviousowners other = (Lastpreviousowners) object;
+		if ((this.listingNumber == null && other.listingNumber != null) || (this.listingNumber != null && !this.listingNumber.equals(other.listingNumber)))
 		{
 			return false;
 		}
@@ -188,7 +127,7 @@ public class Salespeople implements Serializable
 	@Override
 	public String toString()
 	{
-		return "moylishmotors.Salespeople[ id=" + id + " ]";
+		return "moylishmotors.Lastpreviousowners[ listingNumber=" + listingNumber + " ]";
 	}
 	
 }
