@@ -89,7 +89,8 @@ public class Favouritelist implements Serializable
 	@Override
 	public String toString()
 	{
-		return "moylishmotors.Favouritelist[ id=" + id + " ]";
+		return "Favouritelist{" + "listingNumber=" + listingNumber + ", id=" + id + '}';
 	}
+	
 	
 }

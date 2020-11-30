@@ -52,29 +52,13 @@
 			</c:forEach>
 		</select>
 
-		<label>favourites</label>
-		<select name="favourites">
-			<option value=""></option>                
-
-		</select>
+		
 
 		<button type="submit">Search</button>
 	</form>
 	<form name="stock" action="stock">
-
-		<br><br> 
-		<input type="submit" value="Get All Price" name="btn2" />
-		<br>
-		<a href="people.jsp">List of people</a>
-
-	</form>
-	<form name="Search" action="Search">
-
-		<br><br> 
-		<input type="submit" value="Search Page" name="btn2" />
-		<br>	           
-
-	</form> 
+	</form>          
+s
 	<form name="People" action="People">
 
 		<br><br> 

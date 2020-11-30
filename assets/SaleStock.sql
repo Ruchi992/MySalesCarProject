@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `sales_stock` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `sales_stock`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sales_stock
@@ -16,6 +14,198 @@ USE `sales_stock`;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `car`
+--
+
+DROP TABLE IF EXISTS `car`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `car` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `ListingNumber` int DEFAULT NULL,
+  `Reg` text,
+  `Make` text,
+  `Model` text,
+  `Colour` text,
+  `Year` text,
+  `Engine` double DEFAULT NULL,
+  `Body` text,
+  `Fuel` text,
+  `OdometerKPH` int DEFAULT NULL,
+  `Transmission` text,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `car`
+--
+
+LOCK TABLES `car` WRITE;
+/*!40000 ALTER TABLE `car` DISABLE KEYS */;
+INSERT INTO `car` VALUES (1,4294194,'202-CE-853','Opel','Elite 2.0D 170 Auto','Black','2020 (201)',2,'Hatchback','Diesel',25462,'Automatic'),(2,4294195,'119-L-7896','Hyundai ','i30 i30N 2.0 T-GDi','Grey','2019 (191)',2,'Hatchback','Petrol',19855,'Manual'),(3,4294196,'161-T-365','Toyota','Rav4 Luna 2.0D-4D','Slate','2016 (161)',2,'SUV','Diesel',85411,'Manual'),(4,4294197,'181-L-368','Hyundai ','i30 Deluxe 1.6TD','Sky Blue','2018 (181)',1.6,'Hatchback','Diesel',875471,'Automatic'),(5,4294198,'141-G-642','Volvo','S60 D2 SE 1.6TD','Dark Grey','2014 (141)',1.6,'Saloon','Diesel',124004,'Manual'),(6,4294199,'131-L-974','Peugeot','1.6 HDI ACTIVE 113BHP','Charcoal','2013 (131)',1.6,'MPV','Diesel',240000,'Manual'),(7,4294200,'191-D-87452','Volkswagen ','Up!','White','2019 (191)',1,'Hatchback','Petrol',8900,'Manual'),(8,4294201,'15-L-15','Ford','Focus TITANIUM 1.6TDCI 115PS','Silver','2015 (151)',1.6,'Saloon','Diesel',119875,'Manual'),(9,4294202,'171-L-2753','Nissan ','NOTE 1.5 SV','Cherry','2017 (171)',1.5,'MPV','Diesel',39452,'Manual'),(10,4294204,'152-LK-754','Dacia ','Duster ALTERNATIVE 1.5 DCI110','Black','2015 (152)',1.1,'Hatchback','Petrol',180000,'Manual'),(11,4294205,'171-L-774','Audo','A4 3.0 TDI 218 S Tronic SE','Silver','2017 (171)',1.5,'SUV','Diesel',108009,'Manual'),(12,4294206,'171-D-63547','BMW','X3 AUTOMATIC SPORT','Black','2017 (171)',3,'Saloon','Diesel',79254,'Automatic'),(13,4294207,'181-L-554','Ford','EcoSport TITANIUM 1.0T 140PS 6','Brown','2018 (181)',2,'SUV','Diesel',97854,'Automatic'),(14,4294208,'182-KK-1024','Mercedes-Benz','CLA-Class CLA 180 AMG SPORT 4DR AUTO','Black','2018 (182)',1,'SUV','Petrol',57895,'Manual'),(15,4294209,'181-OY-114','Mercedes-Benz','-Class CLA 180 D URBAN 4DR','Grey','2018 (181)',1.6,'Saloon','Petrol',37512,'Automatic'),(16,4294210,'182-L-4781','Jaguar','E-PACE 2.0 D150PS AWD S AUTO','Black','2018 (182)',1.5,'Saloon','Diesel',85497,'Manual'),(17,4294211,'202-D-24730','Jaguar','F-PACE Chequered Flag 2.0 Auto RWD 180PS','Metallic Eiger Grey','2020 (202)',2,'Saloon','Diesel',107566,'Automatic'),(18,4294212,'162-LS-115','Mazda','CX-5 2WD 2.2D (150PS) EXEC SE','Grey','2016 (162)',2,'Saloon','Diesel',5,'Automatic'),(19,4294213,'172-D-96347','Land Rover','Discovery 2.0 SD4 SE 240PS','Black','2017 (172)',2.2,'SUV','Diesel',63574,'Manual'),(20,4294214,'171-D-78412','Renault ','Captur','Red','2017 (171)',2,'SUV','Diesel',105102,'Automatic'),(21,4294215,'161-D-105785','Audi','A4 1.4 TFSI SPORT 150PS 4DR','Black','2016 (161)',1.5,'SUV','Diesel',19005,'Manual'),(22,4294216,'152-L-1425','Hyundai ','i20 ','Bronze','2015 (152)',1.4,'Saloon','Petrol',88954,'Manual'),(23,4294217,'172-L-3470','Ford','Fiesta TITANIUM 1.25 60PS M5 5','Blue','2017 (172)',1.2,'SUV','Petrol',754010,'Manual'),(24,4294218,'171-KK-445','Mazda','Mazda 6','Brown','2017 (171)',1.2,'Hatchback','Petrol',654020,'Manual'),(25,4294219,'202-D-3614','Mercedes-Benz','A-Class A160 AMG 1.3','Black','2020 (202)',2.2,'Saloon','Diesel',67520,'Manual'),(26,4294220,'181-KK-364','Skoda','Citigo AMBITION','Red','2018 (181)',1.3,'Hatchback','Petrol',3,'Manual'),(27,4294221,'171-L-158','SEAT','Ateca','Blue','2017 (171)',1,'Hatchback','Petrol',11957,'Manual'),(28,4294222,'191-L-9710','Toyota','Camry','Pearl Red','2019 (191)',1,'SUV','Petrol',50475,'Manual'),(29,4294223,'151-L-625','Toyota','Avensis','Grey','2015 (151)',1.6,'Saloon','Hybrid',24874,'Automatic'),(30,4294224,'172-WW-674','Toyota','C-HR SOL','White','2017 (172)',1.6,'Saloon','Diesel',74257,'Manual'),(31,4294225,'202-D-47520','Ford','Puma ST-LINE 5D 1.0T 125 MHEV','White','2020 (202)',1.8,'Hatchback','Hybrid',79457,'Automatic'),(32,4294228,'191-L-686','Kia','Soul','Brown','2019 (191)',1.6,'Coupe','Hybrid',24,'Automatic'),(33,4294229,'191-L-980','Renault','KADJAR','Red','2019 (191)',3,'Saloon','Petrol',287541,'Automatic'),(34,4294230,'162-L-1020','SEAT','Alhambra','Red','2016 (162)',4.2,'Convertible','Diesel',75457,'Automatic'),(35,4294231,'141-L-6651','Nissan ','Leaf','White','2014 (141)',1.3,'Hatchback','Electric',7899,'Automatic');
+/*!40000 ALTER TABLE `car` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `carprice`
+--
+
+DROP TABLE IF EXISTS `carprice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `carprice` (
+  `PriceId` int NOT NULL AUTO_INCREMENT,
+  `BuyPrice` int DEFAULT NULL,
+  `ListPrice` int DEFAULT NULL,
+  PRIMARY KEY (`PriceId`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `carprice`
+--
+
+LOCK TABLES `carprice` WRITE;
+/*!40000 ALTER TABLE `carprice` DISABLE KEYS */;
+INSERT INTO `carprice` VALUES (1,36799,39999),(2,32200,35000),(3,18308,19900),(4,18400,20000),(5,11960,13000),(6,8280,9000),(7,11040,12000),(8,11684,12700),(9,13064,14200),(10,4600,5000),(11,9292,10100),(12,25024,27200),(13,31740,34500),(14,17434,18950),(15,29439,31999),(16,25709,27945),(17,34132,37100),(18,60168,65400),(19,17020,18500),(20,47794,51950),(21,16100,17500),(22,19500,19500),(23,10074,10950),(24,12144,13200),(25,17388,18900),(26,37030,40250),(27,8298,9020),(28,18308,19900),(29,325772,354100),(30,14260,15500),(31,20700,22500),(32,23915,25995),(33,2500,2600),(34,45908,49900),(35,23919,25999),(36,23919,25999),(37,22995,24995),(38,10115,10995);
+/*!40000 ALTER TABLE `carprice` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `favouritelist`
+--
+
+DROP TABLE IF EXISTS `favouritelist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `favouritelist` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `Car` int NOT NULL,
+  `User` int NOT NULL,
+  PRIMARY KEY (`User`,`Car`),
+  UNIQUE KEY `id_UNIQUE` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `favouritelist`
+--
+
+LOCK TABLES `favouritelist` WRITE;
+/*!40000 ALTER TABLE `favouritelist` DISABLE KEYS */;
+INSERT INTO `favouritelist` VALUES (1,4294194,0),(2,4294195,0),(3,4294196,0),(4,4294197,0),(5,4294198,0),(6,4294199,0),(7,4294200,0),(8,4294201,0),(9,4294202,0),(10,4294203,0),(11,4294204,0),(12,4294205,0),(13,4294206,0),(14,4294207,0),(15,4294208,0),(16,4294209,0),(17,4294210,0),(18,4294211,0),(19,4294212,0),(20,4294213,0),(21,4294214,0),(22,4294215,0),(23,4294216,0),(24,4294217,0),(25,4294218,0),(26,4294219,0),(27,4294220,0),(28,4294221,0),(29,4294222,0),(30,4294223,0),(31,4294224,0),(32,4294225,0),(33,4294226,0),(34,4294227,0),(35,4294228,0),(36,4294229,0),(37,4294230,0),(38,4294231,0);
+/*!40000 ALTER TABLE `favouritelist` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `fuel`
+--
+
+DROP TABLE IF EXISTS `fuel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fuel` (
+  `Fuel` varchar(50) DEFAULT NULL,
+  `Id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fuel`
+--
+
+LOCK TABLES `fuel` WRITE;
+/*!40000 ALTER TABLE `fuel` DISABLE KEYS */;
+INSERT INTO `fuel` VALUES ('Petrol',1),('Diesel',2),('Electric',3);
+/*!40000 ALTER TABLE `fuel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lastpreviousowners`
+--
+
+DROP TABLE IF EXISTS `lastpreviousowners`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `lastpreviousowners` (
+  `ListingNumber` int NOT NULL,
+  `LastPreviousOwnersName` text,
+  `LastPreviousOwnerAddress` text,
+  `LastPreviousOwnerPhone` text,
+  `FullServiceHistory` text,
+  PRIMARY KEY (`ListingNumber`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lastpreviousowners`
+--
+
+LOCK TABLES `lastpreviousowners` WRITE;
+/*!40000 ALTER TABLE `lastpreviousowners` DISABLE KEYS */;
+INSERT INTO `lastpreviousowners` VALUES (4294194,'Barry O\'Brien','St Barts, O\'Connell Avenue, Limerick','087 6645257','N'),(4294195,'Fergal Keegan','34 Ferndale, Ennis Road, Limerick','086 5547874','Y'),(4294196,'Dorota Kowalski ','1 Kimberley Villas, Millitary Hill, Ennis','083 6684774','Y'),(4294197,'Jaqueline Freeman','8 Ashwood, Seacrest, Shangort Road, Knocknacarra, Galway','083 4125874','N'),(4294198,'Lisa Munroe','165 Ivy Exchange, Parnell Street, Limerick','087 4578543','N'),(4294199,'Catherine Fitzgibbon','29 Riverbank Hall, Addison Park, Glasnevin, Dublin','086 6634785','N'),(4294200,'Joe Crawley','10 Bloomfield, Monaleen, Limerick','086 9987456','Y'),(4294201,'Ruth OBrien','6 Newtown Park, Annacotty, Limerick','087 1247856','N'),(4294202,'Robert Clancy','88 Lagmore Glen, Limerick','087 6235395','N'),(4294203,'Phillip Rose','26 Lawrence Hill, Caherdavin, Limerick','087 1025175','N'),(4294204,'Liam Ryan','12 Mount Rochfort Close, Adare, Limerick','086 6237936','N'),(4294205,'Nigel Fairbanks','12 Killard, Kilteragh, Dooradoyle, Limerick','086 5494017','Y'),(4294206,'Jennifer Laws','79 Hollybrook Grove, Clontarf, Dublin','083 2051611','N'),(4294207,'Martha Garcia','18 Nicholas Street, Limerick','087 3450025','Y'),(4294208,'Doireann Sheehan','31 Francis Terrace, Kilkenny','868 7774281','Y'),(4294209,'Pawel Nowak ','4 Tegan Court, Screggan, Tullamore, Offaly','085 5170783','Y'),(4294210,'Annika Smirnov','33 Beaumont Road, Corbally, Limerick','086 9706749','Y'),(4294211,'Long Mile Road Motors','Long Mile Rd, Dublin','01 4578965',''),(4294212,'James Doody','The Cresent, Kilminchy, Portlaoise, Laois','086 8499065','N'),(4294213,'Seamus Haugh','31 Northumberland Road, Ballsbridge, Dublin 4','086 3231949','N'),(4294214,'Dermot Boyle','4 Portobello Road, Portobello, Dublin 8','086 9262414','Y'),(4294215,'Terry McGrath','36 Bulfin Road, Inchicore, Dublin 8','087 2456843','Y'),(4294216,'Fintan Cooper','65 Sarsfield Terrace, Richmond Hill, Limerick','083 1542867','N'),(4294217,'Shelia Noonan','6 Ashbrook Lawn, Ennis Road, Limerick','086 8276894','N'),(4294218,'Mary Barrett','10 Marian Place, Bennettsbridge, Kilkenny','086 7791561','N'),(4294219,'Long Mile Road Motors','Long Mile Rd, Dublin','01 4578965',''),(4294220,'Maude Condon','51 Seville Lawns, Margaretsfields, Callan Road, Kilkenny','087 5776948','N'),(4294221,'Rita Byrne','14 Beechwood Drive, Greystones, Ennis Road, Co. Limerick','087 7007777','N'),(4294222,'David Bourke','15 Haymarket, Cathedral Place, Limerick City,','086 1636400','N'),(4294223,'Jorge Gonzalez','15 Alandale Orchard, Ashbourne Avenue, South Circular Road, Limerick','087 5636825','N'),(4294224,'Khristina Yahontov','108 Curragh birin, Castletroy, Limerick','087 3115251','N'),(4294225,'Long Mile Road Motors','Long Mile Rd, Dublin','01 4578965','Y'),(4294226,'Diego Lopez','Apt 4 Avery House, Windmill Street, Limerick','086 2777146','N'),(4294227,'Imelda Franciosi','Apartment 3, Scots Marsh House, William Street, Waterford','086 3209255','N'),(4294228,'Aarna Ahluwalia','14 High Street, Croom, Co. Limerick','086 8812005','N'),(4294229,'Moira Broe','Kilcurly, Manister, Crecora, Co. Limerick','083 8121891','Y'),(4294230,'Katina Turgenev','Touchwood Stables, Dooneen, Crecora, Co. Limerick','087 7364930','Y'),(4294231,'Kathy Blake','6 The Beacon Courtyard, Main Street Patrickswell, Patrickswell, Co. Limerick','086 1394459','Y');
+/*!40000 ALTER TABLE `lastpreviousowners` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `salespeople`
+--
+
+DROP TABLE IF EXISTS `salespeople`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `salespeople` (
+  `SalesPerson` text,
+  `SalesPersonPhone` text,
+  `SalesPersonEmail` text,
+  `SalesPersonFax` text,
+  `LastPreviousOwnersName` text,
+  `LastPreviousOwnerAddress` text,
+  `LastPreviousOwnerPhone` text,
+  `FullServiceHistory` text,
+  `Note` text,
+  `Id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `salespeople`
+--
+
+LOCK TABLES `salespeople` WRITE;
+/*!40000 ALTER TABLE `salespeople` DISABLE KEYS */;
+INSERT INTO `salespeople` VALUES ('Dave Lindale','061 208209','dave.lindale@moylishmotors.ie','061 209209','Barry O\'Brien','St Barts, O\'Connell Avenue, Limerick','087 6645257','N','Reduced from €41,000',1),('Connie Jackson','061 208208','connie.jackson@moylishmotors.ie','061 209208','Fergal Keegan','34 Ferndale, Ennis Road, Limerick','086 5547874','Y','',2),('Mary McKeown','62 208208','mary.mckeown@moylishmotors.ie','061 207207','Jaqueline Freeman','8 Ashwood, Seacrest, Shangort Road, Knocknacarra, Galway','083 4125874','N','****DEPOSIT TAKEN (€1500) R Tierney (083 8454752)****',3),('Bianca Davies','63 208208','bianca.davie@moylishmotors.ie','061 209206','Catherine Fitzgibbon','29 Riverbank Hall, Addison Park, Glasnevin, Dublin','086 6634785','N','',4),('Terry Dunlee','64 208209','terry.dunlee@moylishmotors.ie','061 209205','Joe Crawley','10 Bloomfield, Monaleen, Limerick','086 9987456','Y','',5);
+/*!40000 ALTER TABLE `salespeople` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `salespeoplelisting`
+--
+
+DROP TABLE IF EXISTS `salespeoplelisting`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `salespeoplelisting` (
+  `ListingNumber` int NOT NULL,
+  `SalesPersonEmail` text,
+  PRIMARY KEY (`ListingNumber`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `salespeoplelisting`
+--
+
+LOCK TABLES `salespeoplelisting` WRITE;
+/*!40000 ALTER TABLE `salespeoplelisting` DISABLE KEYS */;
+INSERT INTO `salespeoplelisting` VALUES (4294194,'dave.lindale@moylishmotors.ie'),(4294195,'connie.jackson@moylishmotors.ie'),(4294196,'dave.lindale@moylishmotors.ie'),(4294197,'mary.mckeown@moylishmotors.ie'),(4294198,'dave.lindale@moylishmotors.ie'),(4294199,'bianca.davie@moylishmotors.ie'),(4294200,'terry.dunlee@moylishmotors.ie'),(4294201,'dave.lindale@moylishmotors.ie'),(4294202,'dave.lindale@moylishmotors.ie'),(4294203,'terry.dunlee@moylishmotors.ie'),(4294204,'connie.jackson@moylishmotors.ie'),(4294205,'connie.jackson@moylishmotors.ie'),(4294206,'mary.mckeown@moylishmotors.ie'),(4294207,'mary.mckeown@moylishmotors.ie'),(4294208,'bianca.davie@moylishmotors.ie'),(4294209,'terry.dunlee@moylishmotors.ie'),(4294210,'terry.dunlee@moylishmotors.ie'),(4294211,'connie.jackson@moylishmotors.ie'),(4294212,'terry.dunlee@moylishmotors.ie'),(4294213,'mary.mckeown@moylishmotors.ie'),(4294214,'connie.jackson@moylishmotors.ie'),(4294215,'connie.jackson@moylishmotors.ie'),(4294216,'terry.dunlee@moylishmotors.ie'),(4294217,'dave.lindale@moylishmotors.ie'),(4294218,'mary.mckeown@moylishmotors.ie'),(4294219,'mary.mckeown@moylishmotors.ie'),(4294220,'terry.dunlee@moylishmotors.ie'),(4294221,'dave.lindale@moylishmotors.ie'),(4294222,'dave.lindale@moylishmotors.ie'),(4294223,'bianca.davie@moylishmotors.ie'),(4294224,'terry.dunlee@moylishmotors.ie'),(4294225,'dave.lindale@moylishmotors.ie'),(4294226,'bianca.davie@moylishmotors.ie'),(4294227,'terry.dunlee@moylishmotors.ie'),(4294228,'mary.mckeown@moylishmotors.ie'),(4294229,'bianca.davie@moylishmotors.ie'),(4294230,'bianca.davie@moylishmotors.ie'),(4294231,'terry.dunlee@moylishmotors.ie');
+/*!40000 ALTER TABLE `salespeoplelisting` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `salesstock`
@@ -68,12 +258,54 @@ INSERT INTO `salesstock` VALUES (1,4294194,'2020 (201)','202-CE-853','Opel','Eli
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'sales_stock'
+-- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT NULL,
+  `Password` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `username_UNIQUE` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 --
--- Dumping routines for database 'sales_stock'
+-- Dumping data for table `user`
 --
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'Connie','letmein'),(2,'tomc','tompass'),(3,'admin','adminpass');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `userroles`
+--
+
+DROP TABLE IF EXISTS `userroles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `userroles` (
+  `userID` int NOT NULL AUTO_INCREMENT,
+  `role` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `userroles`
+--
+
+LOCK TABLES `userroles` WRITE;
+/*!40000 ALTER TABLE `userroles` DISABLE KEYS */;
+INSERT INTO `userroles` VALUES (1,'admin'),(2,'salesperson'),(3,'customers');
+/*!40000 ALTER TABLE `userroles` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -84,4 +316,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-13 16:08:49
+-- Dump completed on 2020-11-30 20:26:20

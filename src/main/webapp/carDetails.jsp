@@ -6,61 +6,59 @@
     <head><title>Limerick Motor </title>
 		<LINK REL=STYLESHEET HREF="assets/css/style.css" TYPE="text/css">
 	</head>
-    <body>
+	    <body>
+	<style>
+	div {
+  padding-left: 700px;
+  
+   }
+   p{
+	   padding-top: 2px;
+   }
+   dt{
+	   padding-left: 400px;
+	   padding-top: 0px;
+   }
+   section{
+	   padding-left: 700px;
+	   
+   }
+   </style>
+	
+
 		<a href="index.jsp">Home</a>
 		<h1>${car.listingNumber} Details</h1>
-        <table>
-			<tr>
-				<td>Image</td>
-				<td>Year</td>
-				<td>Registration</td>
-				<td>Make</td>
-				<td>Model</td>
-				<td> Engine</td>
-				<td>Body</td>
-				<td> Fuel</td>
-				<td> Transmission</td>
-			</tr> 
-			<tr>
-				<td>
-					<c:forEach items="${images}" var="image">
-				    <img src="/moylishmotors/${image}" width="150" height="100" />
-			    </div>
-		     </c:forEach>
-				<img src="assets/Images/Thumbs/${car.listingNumber}.JPG">
-				
-				</td>
-				<td>${car.year}</td> 
-				<td>${car.reg}</td> 
-				<td>${car.make}</td>
-				<td>${car.model}</td>
-				<td>${car.engine}</td>
-				<td>${car.body}</td>
-				<td> ${car.fuel}</td>
-				<td> ${car.transmission}</td>
-				</tr>
-        </table>
-				 <table width='1000' border='1'>
-            <tr>
-               <td>Sales Person</td>
-                <td>Sales Person Phone</td>
-                <td>Sales Person Email</td>
-                <td>Sales Person Fax</td> 
-			</tr>
+        			
+			<section>		
+		    <img src="assets/Images/Thumbs/${car.listingNumber}.JPG "style="width: 350px; height: 350px">
+						
+				<p>${car.year}</p> 
+				<p>${car.reg}</p> 
+				<p>${car.make}</p>
+				<p>${car.model}</p>
+				<p>${car.engine}</p>
+				<p>${car.body}</p>
+				<p> ${car.fuel}</p>
+				<p> ${car.transmission}</p>
+				</section>  
+			
           
 							
-                <tr>
-					 <td>${salesPerson.salesPerson}</td>
-                     <td>${salesPerson.salesPersonPhone}</td>
-                    <td>${salesPerson.salesPersonEmail}</td>
-                    <td>${salesPerson.salesPersonFax}</td>
-                  </tr>
+			<div>
+				<img src="assets/Images/SalePeople/Bianca Davies.jpg ALIGN="LEFT">
+				<p> Sales Person Details: ${salesPerson.salesPerson}</p>
+				<p> Sales Person Phone number:   ${salesPerson.salesPersonPhone}</p>
+				<p> ${salesPerson.salesPersonEmail}</p>
+				<p>${salesPerson.salesPersonFax}</p>
+			</div>
 				  
-				  ${previousowner.listingNumber}
-				 ${previousowner.lastPreviousOwnersName}
-				 ${previousowner.lastPreviousOwnerAddress}
-				 ${previousowner.lastPreviousOwnerPhone}
-				 ${previousowner.fullServiceHistory}
+				  <p> Previous owner of this car: 
+				  <p> Listing Number:  ${previousowner.listingNumber}</p>
+				  <p>  Previous Owners Name: ${previousowner.lastPreviousOwnersName}</p>
+				  
+				  <p> Address: ${previousowner.lastPreviousOwnerAddress}</p>
+				  <p> Phone number: ${previousowner.lastPreviousOwnerPhone}</p>
+				 <p> Service History: ${previousowner.fullServiceHistory}</p>
 				  
         </table>
 	</body>

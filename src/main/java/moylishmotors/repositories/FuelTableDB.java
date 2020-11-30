@@ -41,7 +41,7 @@ public class FuelTableDB
         EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
         System.out.println("feul");
 		
-        String query = "SELECT f.fuel FROM FuelTable f";
+        String query = "SELECT f.fuel FROM Fuel f";
         
         TypedQuery<String> tq = em.createQuery(query, String.class);
         
