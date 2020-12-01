@@ -11,6 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<LINK REL=STYLESHEET HREF="assets/css/style.css" TYPE="text/css">
         <title>JSP Page</title>
     </head>
     <body>
@@ -21,11 +22,13 @@
                <td> Listing Number</td>
             </tr>
 			
-            <c:forEach items="${list}" var="fev">
+            
 				<tr>
-				<td>${fev.listingNumber}</td>
+				<td>${car.listingNumber}</td>
+				<td>${car.make}</td>
+				<td>${car.model}</td>
 			</tr>
-			</c:forEach>
+			
 		</table>
 	
     </body>

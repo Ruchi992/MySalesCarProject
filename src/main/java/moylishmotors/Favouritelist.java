@@ -27,24 +27,35 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries(
 {
 	@NamedQuery(name = "Favouritelist.findAll", query = "SELECT f FROM Favouritelist f"),
+	@NamedQuery(name = "Favouritelist.findById", query = "SELECT f FROM Favouritelist f WHERE f.id = :id"),
 	@NamedQuery(name = "Favouritelist.findByListingNumber", query = "SELECT f FROM Favouritelist f WHERE f.listingNumber = :listingNumber"),
-	@NamedQuery(name = "Favouritelist.findById", query = "SELECT f FROM Favouritelist f WHERE f.id = :id")
+	@NamedQuery(name = "Favouritelist.findByUserId", query = "SELECT f FROM Favouritelist f WHERE f.userId = :userId")
 })
 public class Favouritelist implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
-	@Column(name = "ListingNumber")
-	private Integer listingNumber;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
+    @Column(name = "Id")
 	private Integer id;
+	@Column(name = "listingNumber")
+	private Integer listingNumber;
+	@Column(name = "userId")
+	private Integer userId;
 	public Favouritelist()
 	{
 	}
 	public Favouritelist(Integer id)
+	{
+		this.id = id;
+	}
+	public Integer getId()
+	{
+		return id;
+	}
+	public void setId(Integer id)
 	{
 		this.id = id;
 	}
@@ -56,13 +67,13 @@ public class Favouritelist implements Serializable
 	{
 		this.listingNumber = listingNumber;
 	}
-	public Integer getId()
+	public Integer getUserId()
 	{
-		return id;
+		return userId;
 	}
-	public void setId(Integer id)
+	public void setUserId(Integer userId)
 	{
-		this.id = id;
+		this.userId = userId;
 	}
 	@Override
 	public int hashCode()
@@ -89,7 +100,7 @@ public class Favouritelist implements Serializable
 	@Override
 	public String toString()
 	{
-		return "Favouritelist{" + "listingNumber=" + listingNumber + ", id=" + id + '}';
+		return "Favouritelist{" + "id=" + id + ", listingNumber=" + listingNumber + ", userId=" + userId + '}';
 	}
 	
 	

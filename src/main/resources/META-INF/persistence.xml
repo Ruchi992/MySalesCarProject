@@ -15,6 +15,9 @@
     <class>moylishmotors.Car</class>
     <class>moylishmotors.Fuel</class>
     <class>moylishmotors.Favouritelist</class>
+    <class>moylishmotors.User_1</class>
+    <class>moylishmotors.Salesstock</class>
+    <class>moylishmotors.Carprice</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sales_stock?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

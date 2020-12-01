@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import moylishmotors.repositories.CarTableDB;
 import moylishmotors.Car;
-import moylishmotors.Fuel;
-import moylishmotors.SalesStock;
-import moylishmotors.repositories.FuelTableDB;
+import moylishmotors.Salesstock;
 
 /**
  *
@@ -43,7 +41,7 @@ public class CarSearchResultsServlet extends HttpServlet
 			int stockId = 0;
 
 			String address = "/carsearchresults.jsp";
-			SalesStock s = null;
+			Salesstock s = null;
 
 			try
 			{

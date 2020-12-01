@@ -22,16 +22,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Ruchi Devi <https://github.com/Ruchi992>
  */
 @Entity
-@Table(name = "carpricetable")
+@Table(name = "carprice")
 @XmlRootElement
 @NamedQueries(
 {
-	@NamedQuery(name = "Carpricetable.findAll", query = "SELECT c FROM Carpricetable c"),
-	@NamedQuery(name = "Carpricetable.findByPriceId", query = "SELECT c FROM Carpricetable c WHERE c.priceId = :priceId"),
-	@NamedQuery(name = "Carpricetable.findByBuyPrice", query = "SELECT c FROM Carpricetable c WHERE c.buyPrice = :buyPrice"),
-	@NamedQuery(name = "Carpricetable.findByListPrice", query = "SELECT c FROM Carpricetable c WHERE c.listPrice = :listPrice")
+	@NamedQuery(name = "Carprice.findAll", query = "SELECT c FROM Carprice c"),
+	@NamedQuery(name = "Carprice.findByPriceId", query = "SELECT c FROM Carprice c WHERE c.priceId = :priceId"),
+	@NamedQuery(name = "Carprice.findByBuyPrice", query = "SELECT c FROM Carprice c WHERE c.buyPrice = :buyPrice"),
+	@NamedQuery(name = "Carprice.findByListPrice", query = "SELECT c FROM Carprice c WHERE c.listPrice = :listPrice")
 })
-public class Carpricetable implements Serializable
+public class Carprice implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
@@ -44,10 +44,10 @@ public class Carpricetable implements Serializable
 	private Integer buyPrice;
 	@Column(name = "ListPrice")
 	private Integer listPrice;
-	public Carpricetable()
+	public Carprice()
 	{
 	}
-	public Carpricetable(Integer priceId)
+	public Carprice(Integer priceId)
 	{
 		this.priceId = priceId;
 	}
@@ -86,11 +86,11 @@ public class Carpricetable implements Serializable
 	public boolean equals(Object object)
 	{
 		// TODO: Warning - this method won't work in the case the id fields are not set
-		if (!(object instanceof Carpricetable))
+		if (!(object instanceof Carprice))
 		{
 			return false;
 		}
-		Carpricetable other = (Carpricetable) object;
+		Carprice other = (Carprice) object;
 		if ((this.priceId == null && other.priceId != null) || (this.priceId != null && !this.priceId.equals(other.priceId)))
 		{
 			return false;
@@ -100,7 +100,7 @@ public class Carpricetable implements Serializable
 	@Override
 	public String toString()
 	{
-		return "moylishmotors.Carpricetable[ priceId=" + priceId + " ]";
+		return "moylishmotors.Carprice[ priceId=" + priceId + " ]";
 	}
 	
 }

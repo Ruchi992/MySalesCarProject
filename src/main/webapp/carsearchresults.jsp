@@ -20,6 +20,7 @@
 				<td> Fuel</td>
 				<td>Odometer KPH</td>
 				<td>Transmission</td>
+				<td></td>
 				
 			</tr> 
 			<c:forEach items="${list}" var="salesstock">
@@ -37,6 +38,7 @@
 				<td>${salesstock.fuel}</td>
 				<td>${salesstock.odometerKPH}</td>
 				<td>${salesstock.transmission}</td>
+				<td><a href="Addavourites?listingNumber=${salesstock.listingNumber}">Add to favourite</a></td>
 			</c:forEach>
         </table>
 	<td><a href="SalesStockDrillDown?listingNumber=${salesstock.listingNumber}"><img src="assets/Images/Thumbs/${salesstock.listingNumber}.JPG"></a></td>

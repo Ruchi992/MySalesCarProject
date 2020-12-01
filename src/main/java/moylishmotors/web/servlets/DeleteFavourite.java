@@ -6,25 +6,22 @@
 package moylishmotors.web.servlets;
 
 import java.io.IOException;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import moylishmotors.repositories.SalesPeopleDB;
-import moylishmotors.Salespeople;
 
 /**
  *
  * @author Ruchi Devi <https://github.com/Ruchi992>
  */
-@WebServlet(name = "People", urlPatterns =
+@WebServlet(name = "DeleteFavourite", urlPatterns =
 {
-	"/People"
+	"/DeleteFavourite"
 })
-public class People extends HttpServlet
+public class DeleteFavourite extends HttpServlet
 {
 
 	/**
@@ -36,26 +33,27 @@ public class People extends HttpServlet
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException if an I/O error occurs
 	 */
-		protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
 	{
 		response.setContentType("text/html;charset=UTF-8");
-		String address;
-		try
+		try (PrintWriter out = response.getWriter())
 		{
-			List<Salespeople> list = SalesPeopleDB.getAllSalespeoples();
-			//System.out.println("moylishmotors.web.servlets.People.processRequest() list:" + list);
-
-			address = "/people.jsp";
-			request.setAttribute("list", list);
+			String idString = request.getParameter("id");
+           String address = "/deletedProperty.jsp";
+			/* TODO output your page here. You may use following sample code. */
+			out.println("<!DOCTYPE html>");
+			out.println("<html>");
+			out.println("<head>");
+			out.println("<title>Servlet DeleteFavourite</title>");			
+			out.println("</head>");
+			out.println("<body>");
+			out.println("<h1>Servlet DeleteFavourite at " + request.getContextPath() + "</h1>");
+			out.println("</body>");
+			out.println("</html>");
 		}
-		catch(Exception ex)
-		{
-			address = "/error.jsp";
-		}
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-		dispatcher.forward(request, response);
 	}
+
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 	/**
 	 * Handles the HTTP <code>GET</code> method.
@@ -66,10 +64,12 @@ public class People extends HttpServlet
 	 * @throws IOException if an I/O error occurs
 	 */
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
 	{
 		processRequest(request, response);
 	}
+
 	/**
 	 * Handles the HTTP <code>POST</code> method.
 	 *
@@ -79,10 +79,12 @@ public class People extends HttpServlet
 	 * @throws IOException if an I/O error occurs
 	 */
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
 	{
 		processRequest(request, response);
 	}
+
 	/**
 	 * Returns a short description of the servlet.
 	 *
@@ -91,7 +93,7 @@ public class People extends HttpServlet
 	@Override
 	public String getServletInfo()
 	{
-		return "Sales Stock Servlet";
-	}
-	// </editor-fold>
+		return "Short description";
+	}// </editor-fold>
+
 }

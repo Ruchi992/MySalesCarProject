@@ -28,7 +28,14 @@
 
 		<a href="index.jsp">Home</a>
 		<h1>${car.listingNumber} Details</h1>
-        			
+        		
+		 <td>Images</td>
+                <td>
+                    <c:forEach var="img" items="${listCar}">
+                        <img src="assets/Images/Large/${car.getByLinstingNumber()}/${img}">
+                    </c:forEach>
+                </td>
+		
 			<section>		
 		    <img src="assets/Images/Thumbs/${car.listingNumber}.JPG "style="width: 350px; height: 350px">
 						

@@ -1,9 +1,12 @@
 package moylishmotors.web.servlets;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,7 +61,21 @@ public class CarDetailsServlet extends HttpServlet
 			  Car car = CarTableDB.getByLinstingNumber(listingNumber);
 			
 			request.setAttribute("car", car);
-			//request.setAttribute("propertytypes", pt);
+			System.err.println(" Getting car");
+			List listcar = new ArrayList();
+			String FolderPath = "/assets/Images/Large" + listingNumber +"/";
+			 ServletContext application = getServletContext();
+			 String absolutePath = application.getRealPath(FolderPath);
+			 System.err.println(" Getting car");
+			 File fileDir = new File(absolutePath);
+			 for (File fileImage : fileDir.listFiles()){
+				 
+				 String imageFileName = fileImage.getName();
+				 System.out.println(imageFileName);
+				 listcar.add(imageFileName);
+			 }
+			 request.setAttribute("listcar", listcar);
+		//request.setAttribute("propertytypes", pt);
 			Salespeoplelisting listing = SalespeoplelistingDB.getByLinstingNumber(listingNumber);
 			Salespeople salesPerson = SalesPeopleDB.getByEmail(listing.getSalesPersonEmail());
 			request.setAttribute("salesPerson", salesPerson);
@@ -87,9 +104,9 @@ public class CarDetailsServlet extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
-	{
-		processRequest(request, response);
-	}
+	  {
+		       processRequest(request, response);
+	  }
 
 	/**
 	 * Handles the HTTP <code>POST</code> method.

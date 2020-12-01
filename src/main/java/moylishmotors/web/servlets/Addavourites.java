@@ -6,18 +6,17 @@
 package moylishmotors.web.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import moylishmotors.Car;
 import moylishmotors.Favouritelist;
-import moylishmotors.SalesStock;
+import moylishmotors.repositories.CarTableDB;
 import moylishmotors.repositories.FavouriteDB;
-import moylishmotors.repositories.StockDB;
 
 /**
  *
@@ -46,11 +45,22 @@ public class Addavourites extends HttpServlet
 		String address;
 		try
 		{
-			List<Favouritelist> list = FavouriteDB.getAlllist();
-            System.out.println("moylishmotors.web.servlets.Addavourites.processRequest()" + list);
+			  HttpSession httpsession = request.getSession(false);
+			  int listingNumber = Integer.parseInt(request.getParameter("listingNumber"));
+			  int userId = 1; // TODO get userId from logged in user
+			  System.out.println("moylishmotors.web.servlets.Addavourites.processRequest()" + listingNumber);
+			  Favouritelist favourite = new Favouritelist();
+			  favourite.setUserId(userId);
+			  favourite.setListingNumber(listingNumber);
+			  System.out.println("Favouite" + favourite);
+			FavouriteDB.add(favourite);
+			
+			
+			Car car = CarTableDB.getByLinstingNumber(listingNumber);
+            
 			address = "/favourite.jsp";
-			request.setAttribute("list", list);
-			System.out.println(" Im here ");
+			request.setAttribute("car", car);
+			System.out.println(" here ");
 		}
 		catch(Exception ex)
 		{

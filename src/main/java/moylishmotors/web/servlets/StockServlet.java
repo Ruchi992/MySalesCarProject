@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import moylishmotors.SalesStock;
+import moylishmotors.Salesstock;
 import moylishmotors.repositories.StockDB;
 
 @WebServlet(name = "stock", urlPatterns =
@@ -32,8 +32,8 @@ public class StockServlet extends HttpServlet
 		String address;
 		try
 		{
-			List<SalesStock> list = StockDB.getAllSalesStock();
-
+			List<Salesstock> list = StockDB.getAllSalesStock();
+           System.out.println("moylishmotors.web.servlets.StockServlet.processRequest()" + list);
 			address = "/stock.jsp";
 			request.setAttribute("list", list);
 		}

@@ -3,6 +3,7 @@
     Created on : 17 Nov 2020, 17:20:32
     Author     : Ruchi Devi <https://github.com/Ruchi992>
 --%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
