@@ -14,6 +14,7 @@
 		<LINK REL=STYLESHEET HREF="assets/css/style.css" TYPE="text/css">
         <title>Moylish Motor</title>
 	<h1> Welcome to the Moylish Motor's</h1>
+	<p> Fill All the Search field According to the database then it will land you in search result page</p>
 </head>
 <body>
 	<form method="get" action="CarSearchResults">
@@ -59,14 +60,6 @@
 	</form>
 	<form name="stock" action="stock">
 	</form>          
-s
-	<form name="People" action="People">
-
-		<br><br> 
-		<input type="submit" value="People Page" name="btn2" />
-		<br>	           
-
-	</form> 
 
 
 	<c:forEach items="${list}" var="mrk">

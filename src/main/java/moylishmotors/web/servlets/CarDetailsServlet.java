@@ -1,10 +1,12 @@
 package moylishmotors.web.servlets;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import static java.util.Locale.filter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -34,7 +36,7 @@ public class CarDetailsServlet extends HttpServlet
     private final String idKey = "id";
 	private final String imageDirectory = "images/large/";
 	private final String thumbDirectory = "images/large/";
-
+             private final String fileimage = "";
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
 	 * methods.
@@ -60,33 +62,31 @@ public class CarDetailsServlet extends HttpServlet
 			session.setAttribute("requestId", requestId);
 			  Car car = CarTableDB.getByLinstingNumber(listingNumber);
 			
-			request.setAttribute("car", car);
-			System.err.println(" Getting car");
-			List listcar = new ArrayList();
-			String FolderPath = "/assets/Images/Large" + listingNumber +"/";
-			 ServletContext application = getServletContext();
-			 String absolutePath = application.getRealPath(FolderPath);
-			 System.err.println(" Getting car");
-			 File fileDir = new File(absolutePath);
-			 for (File fileImage : fileDir.listFiles()){
-				 
-				 String imageFileName = fileImage.getName();
-				 System.out.println(imageFileName);
-				 listcar.add(imageFileName);
-			 }
-			 request.setAttribute("listcar", listcar);
-		//request.setAttribute("propertytypes", pt);
+			request.setAttribute("car", car);			
+			
+			String FolderPath = "/assets/Images/Large/" + listingNumber +"/";
+						 	
+				 ServletContext app = getServletContext();
+                     String p = app.getRealPath(FolderPath);
+                     int num = new File(p).list().length - 1;
+                     request.setAttribute("listcar", num);	
+
+					 
+		
 			Salespeoplelisting listing = SalespeoplelistingDB.getByLinstingNumber(listingNumber);
 			Salespeople salesPerson = SalesPeopleDB.getByEmail(listing.getSalesPersonEmail());
-			request.setAttribute("salesPerson", salesPerson);
+			
+			request.setAttribute("salesPerson", salesPerson);	
+						 	
+				 
+                     request.setAttribute("listcar", num);
 			Lastpreviousowners listed = LastpreviousowersDB.getByLinstingNumber(listingNumber);
 			Lastpreviousowners previousowner = LastpreviousowersDB.getByName(listed.getLastPreviousOwnersName());
 			request.setAttribute("previousowner", previousowner);
 		}
 		catch (NumberFormatException ex)
 		{
-//				address = "/error.jsp";
-//				ex.printStackTrace();
+		
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(address);
 		dispatcher.forward(request, response);

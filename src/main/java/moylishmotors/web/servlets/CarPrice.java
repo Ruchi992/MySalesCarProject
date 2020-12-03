@@ -14,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import moylishmotors.Carpricetable;
 import moylishmotors.repositories.PriceDB;
 
 /**
@@ -48,7 +47,7 @@ public class CarPrice extends HttpServlet
              
         try {
     
-            List<Carpricetable> list = PriceDB.getPriceList();
+            List<CarPrice> list = PriceDB.getPriceList();
  
                 if (list == null || list.isEmpty()) {
                     address = "/error.jsp";
@@ -97,4 +96,12 @@ public class CarPrice extends HttpServlet
             throws ServletException, IOException {
         processRequest(request, response);
     }
+	void setBuyPrice(int parseInt)
+	{
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+	void setlistPrice()
+	{
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 }

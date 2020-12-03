@@ -45,6 +45,7 @@ public class CarSearchResultsServlet extends HttpServlet
 
 			try
 			{
+				//Car car = CarTableDB.getMake(request.getParameter(toString()));
 				System.out.println("StockDrillDowm try");
 				String model = request.getParameter("model");
 				String make = request.getParameter("make");

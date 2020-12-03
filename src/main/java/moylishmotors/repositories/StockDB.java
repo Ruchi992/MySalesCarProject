@@ -22,36 +22,49 @@ public class StockDB
 			entityManager.close();
 		}
 	}
-	public Salesstock getStockById(int id)
-	{
-		EntityManager entityManager = DBUtil.getEntityManagerFactory().createEntityManager();
-		try
-		{
-			return entityManager.find(Salesstock.class, id);
-		}
+	public static Salesstock getByLinstingNumber(int listingNumber)
+	{		
+			EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
+			System.out.println("moylishmotors.repositories.StockDB.getByLinstingNumber()");
+	
+	      String query = "SELECT s FROM Salesstock s WHERE s.listingNumber = :listingNumber";
+
+		TypedQuery<Salesstock> tq = em.createQuery(query, Salesstock.class)
+				
+				.setParameter("listingNumber",listingNumber );
+		 System.out.println("Null");
+				try{
+					return tq.getSingleResult();
+}
 		finally
 		{
 
-			entityManager.close();
+			em.close();
 		}
 	}
-	public static Salesstock getSalesStockByID(int stockId) {
-        EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
+	
+	 public static Salesstock getByPrice(int buyPrice)
+	{		
+			EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
+			String query = "SELECT s FROM Salesstock s WHERE s.buyPrice = :buyPrice";
 
-        Salesstock salesStock = null;
-        try {
-            salesStock = em.find(Salesstock.class, stockId);
-        } catch (Exception ex) {
-            System.out.println(ex);
-        } finally {
-            em.close();
-        }
-
-        return salesStock;
-    }	
-	 
-	 
+		TypedQuery<Salesstock> tq = em.createQuery(query, Salesstock.class)
+				.setParameter("buyPrice",buyPrice );
+		
+				try{
+					return tq.getSingleResult();
 }
+		finally
+		{
+
+			em.close();
+		}
+	}
+  
+}
+	 
+	 
+
 	  
 
 

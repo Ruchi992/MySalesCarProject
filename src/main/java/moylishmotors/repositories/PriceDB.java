@@ -7,8 +7,10 @@ package moylishmotors.repositories;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
-import moylishmotors.Carpricetable;
+import moylishmotors.Carprice;
+import moylishmotors.web.servlets.CarPrice;
 
 /**
  *
@@ -16,15 +18,15 @@ import moylishmotors.Carpricetable;
  */
 public class PriceDB
 {
-public static List<Carpricetable> getPriceList() {
+public static List<CarPrice> getPriceList() {
         EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
         
-        String q = "SELECT c from Carpricetable c";
+        String q = "SELECT c from Carprice c";
         
-        TypedQuery<Carpricetable> tq = em.createQuery(q, Carpricetable.class);
+        TypedQuery<CarPrice> tq = em.createQuery(q, CarPrice.class);
         //TypedQuery<Authors> tq = em.createNamedQuery("Authors.findAll", Authors.class);
         
-        List<Carpricetable> list;
+        List<CarPrice> list;
         
         try {
             list = tq.getResultList();
@@ -41,12 +43,12 @@ public static List<Carpricetable> getPriceList() {
 	
 	}
 	
-	 public static Carpricetable getPriceByID(int PriceId) {
+	 public static CarPrice getPriceByID(int PriceId) {
         EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
 
-        Carpricetable price = null;
+        CarPrice price = null;
         try {
-            price = em.find(Carpricetable.class, PriceId);
+            price = em.find(CarPrice.class, PriceId);
         } catch (Exception ex) {
             System.out.println(ex);
         } finally {
@@ -55,6 +57,27 @@ public static List<Carpricetable> getPriceList() {
 
         return price;
     }
+	 public  static void AddPrice(CarPrice price){
+       EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
+       try{
+       EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        
+        em.persist(price);
+        
+        tx.commit();
+
+       }catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+       
+    }
+	public static Carprice AddPrice(int PriceId)
+	{
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
     
 }
 	

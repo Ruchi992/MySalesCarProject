@@ -14,5 +14,10 @@
     <body>
       <h3>This is the home page for my applications and is visible to everyone</h3>
       <a href="login.jsp">Login</a>
+	  <form name="CarSearch" action="CarSearch">
+		   <br><br> 
+           <input type="submit" value="Go To The Car Search Page" name="btn2" />
+           <br>
+	</form>
     </body>
 </html>

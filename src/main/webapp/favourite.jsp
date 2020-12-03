@@ -16,6 +16,13 @@
     </head>
     <body>
         <h1> Add Fav</h1>
+		<script>
+        $( document ).ready(function() {
+         $('#delete').on('click', function () { 
+                return confirm('Are you sure you want to delete this favourite?'); 
+            });
+       });
+    </script>
         
 		<table width='1000' border='1'>
 			<tr>
@@ -28,6 +35,7 @@
 				<td>${car.make}</td>
 				<td>${car.model}</td>
 			</tr>
+			<td><a href="DeleteFavourite?listingNumber=${car.listingNumber}">Delete</a></td>
 			
 		</table>
 	

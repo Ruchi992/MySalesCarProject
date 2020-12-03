@@ -8,6 +8,7 @@ package moylishmotors.repositories;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Id;
 import javax.persistence.TypedQuery;
 import moylishmotors.Favouritelist;
 
@@ -54,10 +55,9 @@ public class FavouriteDB
      }  
      
  }
-	 public static int deleteFav(int id) {
-        System.out.println("PropertyDB DeleteProperty " + id);
-        EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
-        String query = "DELETE FROM Favouritelist f WHERE f.id = :id";
+	 public static void deleteFav( int listingNumber) {
+         EntityManager em = DBUtil.getEntityManagerFactory().createEntityManager();
+        String query = "DELETE  f FROM Favouritelist f WHERE f.listingNumber = :listingNumber";
                 
         TypedQuery<Favouritelist> tq = em.createQuery(query, Favouritelist.class);
         int result = 0;
@@ -66,14 +66,13 @@ public class FavouriteDB
             
             EntityTransaction tx = em.getTransaction();
             tx.begin();
-            result = tq.setParameter("id", id).executeUpdate();
+            result = tq.setParameter("listingNumber", listingNumber).executeUpdate();
             tx.commit();
         } catch (Exception ex) {
             System.out.println(ex);
         } finally {
             em.close();
         }
-        System.out.println("Favouritelist DeleteFavouritelist   end  ");
-        return result;
+       
     }
 }

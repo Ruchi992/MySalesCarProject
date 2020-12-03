@@ -8,10 +8,7 @@
 	</head>
 	    <body>
 	<style>
-	div {
-  padding-left: 700px;
-  
-   }
+	
    p{
 	   padding-top: 2px;
    }
@@ -21,7 +18,11 @@
    }
    section{
 	   padding-left: 700px;
+	  
 	   
+   }
+   mySlides{
+	   padding-left: auto;
    }
    </style>
 	
@@ -29,16 +30,20 @@
 		<a href="index.jsp">Home</a>
 		<h1>${car.listingNumber} Details</h1>
         		
-		 <td>Images</td>
+		 
                 <td>
-                    <c:forEach var="img" items="${listCar}">
-                        <img src="assets/Images/Large/${car.getByLinstingNumber()}/${img}">
+                    <c:forEach var="img" items="${num}">
+                        <img src="assets/Images/Large/${car.listingNumber()}/${img}">
                     </c:forEach>
                 </td>
+				         <c:forEach begin="1" end="${listcar}" var="num">
+                <div class="mySlides">
+                    <img src="assets/Images/Large/${car.listingNumber}/${car.listingNumber}-${num}.JPG" style="width:50%">
+                </div>
+            </c:forEach>
 		
 			<section>		
-		    <img src="assets/Images/Thumbs/${car.listingNumber}.JPG "style="width: 350px; height: 350px">
-						
+		    					
 				<p>${car.year}</p> 
 				<p>${car.reg}</p> 
 				<p>${car.make}</p>
@@ -52,7 +57,7 @@
           
 							
 			<div>
-				<img src="assets/Images/SalePeople/Bianca Davies.jpg ALIGN="LEFT">
+				<img src="assets/Images/SalePeople/${salesPerson.salesPersonEmail}.JPG">
 				<p> Sales Person Details: ${salesPerson.salesPerson}</p>
 				<p> Sales Person Phone number:   ${salesPerson.salesPersonPhone}</p>
 				<p> ${salesPerson.salesPersonEmail}</p>

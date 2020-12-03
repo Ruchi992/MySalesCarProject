@@ -12,9 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-       <c:forEach items="${list}" var="anStock">
-		   <td>${anStock.buyPrice}</td>
-                    <td>${anStock.listPrice}</td>
+       		   <td>${carPrice.buyPrice}</td>
+                    <td>${carPrice.listPrice}</td>
 	   </c:foreach>
     </body>
 </html>

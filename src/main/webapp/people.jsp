@@ -15,6 +15,12 @@
         <title>JSP Page</title>
     </head>
     <body>
+		<form action="/moylishmotors/UploadPhoto" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="car.listingNumber" value="${car.listingNumber}">        
+        <input type="file" name="file" />
+        <input type="submit" value="Upload" />
+    </form>
+		
 		 <h1>Sales People list</h1>
         <br><br>		
         <table width='1000' border='1'>

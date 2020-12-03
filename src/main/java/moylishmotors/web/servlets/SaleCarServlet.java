@@ -6,24 +6,24 @@
 package moylishmotors.web.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import moylishmotors.repositories.FavouriteDB;
+import moylishmotors.Salesstock;
+import moylishmotors.repositories.StockDB;
 
 /**
  *
  * @author Ruchi Devi <https://github.com/Ruchi992>
  */
-@WebServlet(name = "DeleteFavourite", urlPatterns =
+@WebServlet(name = "SaleCarServlet", urlPatterns =
 {
-	"/DeleteFavourite"
+	"/SaleCarServlet"
 })
-public class DeleteFavourite extends HttpServlet
+public class SaleCarServlet extends HttpServlet
 {
 
 	/**
@@ -38,32 +38,33 @@ public class DeleteFavourite extends HttpServlet
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 	{
-		response.setContentType("text/html;charset=UTF-8");
 		
-		String idString = request.getParameter("Id");
-           String address = "/deleteFavourite.jsp";
-		
-			
-			/* TODO output your page here. You may use following sample code. */
-           try {
-            int deleted = 0;
-            int listingNumber = Integer.parseInt(idString);
-
-            deleted =FavouriteDB.deleteFav(listingNumber);
-
-            request.setAttribute("deleted", deleted);
-
-        } catch (Exception ex) {
-            address = "/error.jsp";
-            System.out.println(ex);
-        }
-
-        System.out.println("ManageCars - processRequest- end");
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request, response); 
-    }
 	
-	@Override
+		response.setContentType("text/html;charset=UTF-8");
+		 String address;
+               	
+        
+           try{ 
+			   Salesstock carPrice = StockDB.getByLinstingNumber(Integer.parseInt(request.getParameter("listingNumber")));
+			   if(carPrice.getBuyPrice() <= 50000){
+			   System.out.println("carPrice" + carPrice);
+			  address = "/checkCarPrice.jsp";
+			request.setAttribute("CheckPrice", carPrice);
+		   } 
+			   else if( carPrice.getBuyPrice() == 15000){
+				   address = "/Salecar.jsp";
+			        request.setAttribute("SaleCar", carPrice);
+                              }
+         
+		   }catch(NumberFormatException ex) {
+             address = "/error.jsp";
+        //
+	  RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+        dispatcher.forward(request, response);
+        }
+	} 
+	
+@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		processRequest(request, response);
@@ -94,28 +95,4 @@ public class DeleteFavourite extends HttpServlet
 	// </editor-fold>
 }
 
-
 	
-
-  
-   
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-   
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-   
-   
-
-

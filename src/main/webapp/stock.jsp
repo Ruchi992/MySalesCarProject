@@ -6,12 +6,23 @@
 
 <html>
     <head>
-		<title>All Sales stock</title>
+		<title> Display All Car Price</title>
 	</head>
 	<body>
-        <h1>All Sales Stock</h1>
+        <h1>Display All Car Price</h1>
         <br><br>
-        <table width='1000' border='2'>
+		<form name="People" action="People">
+
+		<br><br> 
+		<input type="submit" value=" Get Lis Of People" name="btn2" />
+		<br><br>
+		</form>
+		<form name="SaleCarServlet" action="SaleCarServlet">
+          	<input type="submit" value=" SaleCar" name="btn2" />
+			</br>
+
+	</form>
+        <table width='1000' border='1'>
             <tr>
                 <td>Listing Number</td>
                  
@@ -31,16 +42,8 @@
                      <td>${item.isofix}</td>
                     <td>${item.motorTax}</td>              
                      <td>${item.note}</td>
-					<c:choose>
-                        <c:when test="${anAccount.balance < 0}">
-                            <td bgcolor=#FF0000><fmt:formatNumber value="${anAccount.balance}" type="currency" currencySymbol="&euro;" maxFractionDigits="2"/>
-                            </td>
-                        </c:when>
-                        <c:otherwise>
-                            <td><fmt:formatNumber value="${anAccount.balance}" type="currency" currencySymbol="&euro;" maxFractionDigits="2"/>
-                            </td>
-                        </c:otherwise>
-                    </c:choose>
+					
+                   
                 </tr>
             </c:forEach>
         </table>
